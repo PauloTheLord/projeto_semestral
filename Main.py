@@ -1,5 +1,5 @@
 
-from flask  import Flask, render_template, request, redirect
+from flask  import Flask, render_template, request, redirect, flash
 from flask_sqlalchemy import SQLAlchemy
 #permissão: pip install flask-sqlalchemy
 
@@ -28,10 +28,10 @@ class Cadastro_paciente(db.Model):
     cidade = db.Column(db.String(200), nullable=True)
     UF = db.Column(db.String(2), nullable=False)
 
+
 @app.route("/login")
 def logar():
     return render_template("./login.html")
-
 
 @app.route("/cadastrar")
 def cadastrar_usuario():
@@ -58,15 +58,20 @@ def add_banco():
     
     novo_usuario = Cadastro_paciente(nome = nome_input, cpf = cpf_input, data_nasc = data_input,
             email = email_input, senha = senha_input, telefone = tel_input, cep = cep_input, rua =  rua_input,
-              bairro = bairro_input, cidade = cidade_input, UF = estado_input  )
+            bairro = bairro_input, cidade = cidade_input, UF = estado_input  )
 
+    user = db.session.query(Cadastro_paciente).filter_by(cpf = cpf_input ).first()
+    if user:
+        alert = True
+    else:
+        alert = False
         #a linha abaixo adiciona os dados para verificação da entrada de dados
-    db.session.add(novo_usuario)
+        db.session.add(novo_usuario)
+
+        #a linha abaixo grava as alterações no banco de dados
+        db.session.commit()
 
 
-    #a linha abaixo grava as alterações no banco de dados
-    db.session.commit()
-
-    return render_template("./cadastrar.html")
+    return render_template("./cadastrar.html", alert_value = alert)
 
 app.run(debug=True)
