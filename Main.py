@@ -8,8 +8,8 @@ from flask_login import LoginManager, login_user, UserMixin, login_required, log
 #Se não colocar URI não tem como conectar o banco em pg html
 app = Flask(__name__)
 
+#comentario 3
 
-#comentario3
 
 #permite o flask_login funcionar corretamente 
 app.secret_key="MedDay"
