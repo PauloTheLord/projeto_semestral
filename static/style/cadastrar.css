@@ -32,6 +32,8 @@
     align-items: center;
     border-radius: 25px;
     box-shadow: 5px 5px 10px;
+    padding: 20px 20px;
+    width: 550px;
 }
 
 .part-1 .card-cadastro .group-titulo-logo {
@@ -48,7 +50,17 @@
     flex-direction: column;
 }
 
-.part-1 .card-cadastro form .textbox {
+.part-1 .card-cadastro form .step {
+    flex-direction: column;
+}
+
+.part-1 .card-cadastro form .step .group-label-input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.part-1 .card-cadastro form .step .textbox {
     width: 300px;
     padding: 5px 10px;
     border: 2px solid var(--secondary-color);
