@@ -8,6 +8,9 @@ from flask_login import LoginManager, login_user, UserMixin, login_required, log
 #Se não colocar URI não tem como conectar o banco em pg html
 app = Flask(__name__)
 
+
+#comentario3
+
 #permite o flask_login funcionar corretamente 
 app.secret_key="MedDay"
 
@@ -18,7 +21,7 @@ lm = LoginManager(app)
 lm.login_view = '/login'
 
 app.config['SQLALCHEMY_DATABASE_URI']  = \
-    'mysql+pymysql://root:Lucas_62@localhost:3306/projeto_semestral'
+    'mysql+pymysql://root:we123@localhost:3306/projeto_semestral'
 
 #a linha abaixo instancia o banco de dados
 db = SQLAlchemy(app)
