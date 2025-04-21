@@ -54,8 +54,7 @@ def add_banco():
     bairro_input = request.form['bairro']
     cidade_input = request.form['cidade']
     estado_input = request.form['UF']
-    
-    
+        
     novo_usuario = Cadastro_paciente(nome = nome_input, cpf = cpf_input, data_nasc = data_input,
             email = email_input, senha = senha_input, telefone = tel_input, cep = cep_input, rua =  rua_input,
             bairro = bairro_input, cidade = cidade_input, UF = estado_input  )
@@ -71,7 +70,46 @@ def add_banco():
         #a linha abaixo grava as alterações no banco de dados
         db.session.commit()
 
-
     return render_template("./cadastrar.html", alert_value = alert)
+
+@app.route("/reset_password", methods = ['POST'])
+def reset_password():
+
+    cpf_input = request.form['cpf']
+    user = db.session.query(Cadastro_paciente).filter_by(cpf = cpf_input ).first()
+
+    if user:
+        alert = False
+        old = request.form['senha_antiga']
+        old_senha = db.session.query(Cadastro_paciente).filter_by(cpf = cpf_input, senha = old).first()
+        if old_senha:
+            new = request.form['senha_nova']
+            if new == old:
+                alert = True
+                alert_txt = 'Sua sennha nova não pode ser igual a atual' 
+            else:
+                alert_txt = '' 
+                user.senha = new
+                #a linha abaixo grava as alterações no banco de dados
+                db.session.commit()
+            
+        else:
+            alert = True
+            alert_txt = 'Senha antiga inválida'     
+    else:
+        alert = True
+        alert_txt = 'CPF não válido' 
+
+    """
+    cpf_input = request.form['cpf']
+    user = db.session.query(Cadastro_paciente).filter_by(cpf = cpf_input ).first()
+
+    new = request.form['senha_nova']
+    user.senha = new
+    #a linha abaixo grava as alterações no banco de dados
+    db.session.commit()
+    """
+    return render_template("./resetarsenha.html",alert_value = alert, txt_alert = alert_txt)
+
 
 app.run(debug=True)
