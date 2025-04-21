@@ -25,9 +25,6 @@
 
     <form method="post" action="./add"  onsubmit="return validarSenhas()">
         
-
-        
-
         <label for="nome">Nome</label>
         <input id="nome" type="text"  required placeholder="digite seu nome e sobrenome" name="nome">
 
@@ -98,19 +95,12 @@
         <label for="validSenha">Confirme a senha</label>
         <input type="password" id="validSenha"  name="validsenha"  required>
 
-
         <span id="mensagemErro" style="color: red;"></span><br>
 
         <button type="submit" id="btn_cadastrar">CADASTRAR</button>
 
     </form >
 
-
-    
-
 <script src="{{ url_for('static', filename = 'script/cadastro.js')}}"></script>
-
-
-
 </body>
 </html>
