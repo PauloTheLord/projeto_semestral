@@ -31,84 +31,91 @@
                     <img src="" alt="" class="img-logo">
                 </div>
                 <form method="post" action="./add"  onsubmit="return validarSenhas()">
-                    
-                    <label for="nome">Nome</label>
-                    <input id="nome" type="text"  required placeholder="digite seu nome e sobrenome" name="nome" class="textbox">
 
-                    <label for="cpf">CPF</label>
-                    <input id= "cpf"  type="text"  pattern="\d{11}" maxlength="11" placeholder="digite seu cpf (apenas números)" name="cpf" class="textbox" required>
+                    <div class="step active">
+                        <label for="nome">Nome</label>
+                        <input id="nome" type="text"  required placeholder="digite seu nome e sobrenome" name="nome" class="textbox">
 
-                    <label for="email">E-mail</label>
-                    <input type="email" id="email" placeholder="digite seu e-mail" name="email" class="textbox" required>
+                        <label for="cpf">CPF</label>
+                        <input id= "cpf"  type="text"  pattern="\d{11}" maxlength="11" placeholder="digite seu cpf (apenas números)" name="cpf" class="textbox" required>
 
-                    <br>
-                    <br>
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" placeholder="digite seu e-mail" name="email" class="textbox" required>
 
-                    <label for="data">Data de Nascimento</label>
-                    <input type="date" id="datanasc"  name="datanasc" class="textbox" required>
+                        <label for="data">Data de Nascimento</label>
+                        <input type="date" id="datanasc"  name="datanasc" class="textbox" required>
 
-                    <label for="tel">telefone</label>
-                    <input type="text" id="tel"   pattern="\d{11}" maxlength="11" name="telefone" class="textbox" required>
+                        <label for="tel">telefone</label>
+                        <input type="text" id="tel"   pattern="\d{11}" maxlength="11" name="telefone" class="textbox" required>
 
-                    <label for="cep">CEP</label>
-                    <input type="text" id="cep" name="cep" pattern="\d{8}" maxlength="8" required placeholder="Digite seu CEP" class="textbox">
-                    
-                    <br>
-                    <br>
+                        <button type="button" onclick="nextStep()">Próximo</button>
+                    </div>
 
-                    <label for="rua">Rua</label>
-                    <input type="text" id="rua"  name="rua" class="textbox">
-                    <label for="bairro">Bairro</label>
-                    <input type="text" id="bairro"  name="bairro" class="textbox">
-                    <label for="cidade">Cidade</label>
-                    <input type="text" id="cidade"  name="cidade" class="textbox">
-                    <label for="UF">UF</label>
-                    <select id="UF" name="UF" class="textbox">
-                        <option value="AC">AC</option>
-                        <option value="AL">AL</option>
-                        <option value="AP">AP</option>
-                        <option value="AM">AM</option>
-                        <option value="BA">BA</option>
-                        <option value="CE">CE</option>
-                        <option value="DF">DF</option>
-                        <option value="ES">ES</option>
-                        <option value="GO">GO</option>
-                        <option value="MA">MA</option>
-                        <option value="MT">MT</option>
-                        <option value="MS">MS</option>
-                        <option value="MG">MG</option>
-                        <option value="PA">PA</option>
-                        <option value="PB">PB</option>
-                        <option value="PR">PR</option>
-                        <option value="PE">PE</option>
-                        <option value="PI">PI</option>
-                        <option value="RJ">RJ</option>
-                        <option value="RN">RN</option>
-                        <option value="RS">RS</option>
-                        <option value="RO">RO</option>
-                        <option value="RR">RR</option>
-                        <option value="SC">SC</option>
-                        <option value="SP">SP</option>
-                        <option value="SE">SE</option>
-                        <option value="TO">TO</option>
+                    <div class="step">
+                        <label for="cep">CEP</label>
+                        <input type="text" id="cep" name="cep" pattern="\d{8}" maxlength="8" required placeholder="Digite seu CEP" class="textbox">
 
-                    </select>
+                        <label for="rua">Rua</label>
+                        <input type="text" id="rua"  name="rua" class="textbox">
 
-                    <br>
-                    <br>
-                    <label for="senha">Crie uma senha</label>
-                    <input type="password" id="senha"  name="senha" class="textbox" required>
+                        <label for="bairro">Bairro</label>
+                        <input type="text" id="bairro"  name="bairro" class="textbox">
 
-                    <label for="validSenha">Confirme a senha</label>
-                    <input type="password" id="validSenha"  name="validsenha" class="textbox" required>
+                        <label for="cidade">Cidade</label>
+                        <input type="text" id="cidade"  name="cidade" class="textbox">
 
-                    <span id="mensagemErro" style="color: red;"></span><br>
+                        <label for="UF">UF</label>
+                        <select id="UF" name="UF" class="textbox">
+                            <option value="AC">AC</option>
+                            <option value="AL">AL</option>
+                            <option value="AP">AP</option>
+                            <option value="AM">AM</option>
+                            <option value="BA">BA</option>
+                            <option value="CE">CE</option>
+                            <option value="DF">DF</option>
+                            <option value="ES">ES</option>
+                            <option value="GO">GO</option>
+                            <option value="MA">MA</option>
+                            <option value="MT">MT</option>
+                            <option value="MS">MS</option>
+                            <option value="MG">MG</option>
+                            <option value="PA">PA</option>
+                            <option value="PB">PB</option>
+                            <option value="PR">PR</option>
+                            <option value="PE">PE</option>
+                            <option value="PI">PI</option>
+                            <option value="RJ">RJ</option>
+                            <option value="RN">RN</option>
+                            <option value="RS">RS</option>
+                            <option value="RO">RO</option>
+                            <option value="RR">RR</option>
+                            <option value="SC">SC</option>
+                            <option value="SP">SP</option>
+                            <option value="SE">SE</option>
+                            <option value="TO">TO</option>
+                        </select>
 
-                    <button type="submit" id="btn_cadastrar">CADASTRAR</button>
+                        <button type="button" onclick="prevStep()">Voltar</button>
+                        <button type="button" onclick="nextStep()">Próximo</button>
+                    </div>
 
+                    <div class="step">
+                        <label for="senha">Crie uma senha</label>
+                        <input type="password" id="senha"  name="senha" class="textbox" required>
+
+                        <label for="validSenha">Confirme a senha</label>
+                        <input type="password" id="validSenha"  name="validsenha" class="textbox" required>
+
+                        <button type="button" onclick="prevStep()">Voltar</button>
+                        
+                        <span id="mensagemErro" style="color: red;"></span><br>
+
+                        <button type="submit" id="btn_cadastrar">CADASTRAR</button>
+                    </div>
                 </form>
             </div>
         </section>
+
         <section class="part-2">
             <img src="" alt="" class="img-back-cadastro">
         </section>
