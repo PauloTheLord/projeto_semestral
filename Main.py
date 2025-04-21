@@ -65,6 +65,7 @@ def add_banco():
     user = db.session.query(Cadastro_paciente).filter_by(cpf = cpf_input ).first()
     if user:
         alert = True
+        return render_template("./cadastrar.html", alert_value = alert)
     else:
         alert = False
         #a linha abaixo adiciona os dados para verificação da entrada de dados
@@ -72,8 +73,9 @@ def add_banco():
 
         #a linha abaixo grava as alterações no banco de dados
         db.session.commit()
-
-    return render_template("./cadastrar.html", alert_value = alert)
+        return redirect ("/login")
+    
+    
 
 @app.route("/reset_password", methods = ['POST'])
 def reset_password():
