@@ -23,6 +23,7 @@ app.config['SQLALCHEMY_DATABASE_URI']  = \
 #a linha abaixo instancia o banco de dados
 db = SQLAlchemy(app)
 
+
 #UserMixin permite que o flask_login reconhecer a seguinte classe de usuário
 class Cadastro_paciente(UserMixin, db.Model):
     nome = db.Column(db.String(200), nullable = False)
@@ -88,10 +89,16 @@ def add_banco():
             email = email_input, senha = senha_input, telefone = tel_input, cep = cep_input, rua =  rua_input,
             bairro = bairro_input, cidade = cidade_input, UF = estado_input)
 
+
+    #a  linha abaixo é equivalente a um select no banco, onde na clausula where vai o cpf imputado
     user = db.session.query(Cadastro_paciente).filter_by(cpf = cpf_input ).first()
     if user:
         alert = True
+
         alert_txt = "Esse CPF já foi cadastrado"
+
+        return render_template("./cadastrar.html", alert_value = alert)
+
     else:
         if senha_input != validsenha_input:
             alert = True
@@ -102,10 +109,17 @@ def add_banco():
             #a linha abaixo adiciona os dados para verificação da entrada de dados
             db.session.add(novo_usuario)
 
+
             #a linha abaixo grava as alterações no banco de dados
             db.session.commit()
 
     return render_template("./cadastrar.html", alert_value = alert, txt_alert = alert_txt)
+    #a linha abaixo grava as alterações no banco de dados
+    #db.session.commit()
+    #return redirect ("/login")
+    
+    
+
 
 @app.route("/reset_password", methods = ['POST'])
 def reset_password():
