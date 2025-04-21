@@ -18,3 +18,36 @@
     top: 30vh;
     border-radius: 20px;
 }
+
+.part-1 .card-cadastro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 25px;
+    box-shadow: 5px 5px 10px;
+}
+
+.part-1 .card-cadastro .group-titulo-logo {
+    display: flex;
+}
+
+.part-1 .card-cadastro .group-titulo-logo .titulo-cadastro {
+    font-weight: 400;
+    font-size: 50px;
+}
+
+.part-1 .card-cadastro form {
+    display: flex;
+    flex-direction: column;
+}
+
+.part-1 .card-cadastro form .textbox {
+    width: 300px;
+    padding: 5px 10px;
+    border: 2px solid #58B3FF;
+    border-radius: 15px;
+}
+
+.part-1 .card-cadastro form .textbox:focus {
+    outline: none;
+}
