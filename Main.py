@@ -60,6 +60,8 @@ def add_banco():
             email = email_input, senha = senha_input, telefone = tel_input, cep = cep_input, rua =  rua_input,
             bairro = bairro_input, cidade = cidade_input, UF = estado_input  )
 
+
+    #a  linha abaixo é equivalente a um select no banco, onde na clausula where vai o cpf imputado
     user = db.session.query(Cadastro_paciente).filter_by(cpf = cpf_input ).first()
     if user:
         alert = True
