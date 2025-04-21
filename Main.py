@@ -14,6 +14,7 @@ app.config['SQLALCHEMY_DATABASE_URI']  = \
 db = SQLAlchemy(app)
 
 #cometario de teste
+#comentario de teste 2
 
 class Cadastro_paciente(db.Model):
     nome = db.Column(db.String(200), nullable = False)
