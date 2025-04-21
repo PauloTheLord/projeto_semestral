@@ -25,7 +25,6 @@ function prevStep() {
 showStep(stepAtual);
 
 // Validação das senhas
-document.getElementById ("btn_cadastrar").addEventListener ("click", validarSenhas, false);
 
 document.getElementById ("btn_dispose").addEventListener ("click", disposeDiv, false);
 div_erro = document.getElementById("erro_div")
