@@ -1,9 +1,10 @@
+// Etapas do cadastro
 let stepAtual = 0;
 const steps = document.querySelectorAll(".step");
 
 function showStep(index) {
   steps.forEach((step, i) => {
-    step.style.display = i === index ? "block" : "none";
+    step.style.display = i === index ? "flex" : "none";
   });
 }
 
@@ -23,7 +24,7 @@ function prevStep() {
 
 showStep(stepAtual);
 
-
+// Validação das senhas
 document.getElementById ("btn_cadastrar").addEventListener ("click", validarSenhas, false);
 
 document.getElementById ("btn_dispose").addEventListener ("click", disposeDiv, false);
