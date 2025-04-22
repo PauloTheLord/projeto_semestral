@@ -30,6 +30,7 @@ const cep = document.querySelector("#cep");
 const rua = document.querySelector("#rua");
 const bairro = document.querySelector("#bairro");
 const cidade = document.querySelector("#cidade");
+const uf = document.querySelector("#UF")
 const message_error_cep = document.querySelector("#message_error_cep")
 
 cep.addEventListener('focusout', async () => {
@@ -53,6 +54,7 @@ cep.addEventListener('focusout', async () => {
     rua.value = responseCep.logradouro;
     bairro.value = responseCep.bairro;
     cidade.value = responseCep.localidade;
+    uf.value = responseCep.uf;
 
   } catch (error) {
     if(error?.cep_error) {
