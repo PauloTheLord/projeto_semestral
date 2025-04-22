@@ -70,7 +70,6 @@ cep.addEventListener('focusout', async () => {
         message_error_cep.textContent = '';
       }, 5000);
     }
-    console.log(error)
   }
 });
 
