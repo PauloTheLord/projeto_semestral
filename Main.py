@@ -3,6 +3,8 @@ from flask  import Flask, render_template, request, redirect, flash, url_for
 from flask_sqlalchemy import SQLAlchemy
 # biblioteca responsável pelo gerenciamneto do login (precisa do pip install flask-login ) 
 from flask_login import LoginManager, login_user, UserMixin, login_required, logout_user, current_user
+import smtplib 
+import email.message
 
 #mais outro comentário de teste
 #outro comentário de teste
@@ -21,7 +23,7 @@ lm = LoginManager(app)
 lm.login_view = '/login'
 
 app.config['SQLALCHEMY_DATABASE_URI']  = \
-    'mysql+pymysql://root:we123@localhost:3306/projeto_semestral'
+    'mysql+pymysql://root:Lucas_62@localhost:3306/projeto_semestral'
 
 #a linha abaixo instancia o banco de dados
 db = SQLAlchemy(app)
@@ -122,31 +124,52 @@ def add_banco():
 
 @app.route("/reset_password", methods = ['POST'])
 def reset_password():
-
+    
     cpf_input = request.form['cpf']
-    user = db.session.query(Cadastro_paciente).filter_by(cpf = cpf_input ).first()
+    email_usuario = request.form['email_usuario']
+    
+    # lxcn aapg omlu ogah
+    
+    msg = email.message.Message()
+    msg['Subject'] = "Alterar Senha"
+    msg['From'] = 'lucasdasilvafernandes27@gmail.com'
+    msg['To'] = email_usuario
+    password = 'lxcn aapg omlu ogah' 
+    msg.add_header('Content-Type', 'text/html')
+    msg.set_payload("./email.html")
 
-    if user:
-        alert = False
-        old = request.form['senha_antiga']
-        old_senha = db.session.query(Cadastro_paciente).filter_by(cpf = cpf_input, senha = old).first()
-        if old_senha:
-            new = request.form['senha_nova']
-            if new == old:
-                alert = True
-                alert_txt = 'Sua sennha nova não pode ser igual a atual' 
-            else:
-                alert_txt = '' 
-                user.senha = new
-                #a linha abaixo grava as alterações no banco de dados
-                db.session.commit()          
-        else:
-            alert = True
-            alert_txt = 'Senha antiga inválida'     
-    else:
-        alert = True
-        alert_txt = 'CPF não válido' 
-    return render_template("./resetarsenha.html",alert_value = alert, txt_alert = alert_txt)
+    s = smtplib.SMTP('smtp.gmail.com: 587')
+    s.starttls()
+    # Login Credentials for sending the mail
+    s.login(msg['From'], password)
+    s.sendmail(msg['From'], [msg['To']], msg.as_string().encode('utf-8'))
+    print('Email enviado')
+
+#    cpf_input = request.form['cpf']
+#    user = db.session.query(Cadastro_paciente).filter_by(cpf = cpf_input ).first()
+#
+#    if user:
+#        alert = False
+#        old = request.form['senha_antiga']
+#        old_senha = db.session.query(Cadastro_paciente).filter_by(cpf = cpf_input, senha = old).first()
+#        if old_senha:
+#            new = request.form['senha_nova']
+#            if new == old:
+#                alert = True
+#                alert_txt = 'Sua sennha nova não pode ser igual a atual' 
+#            else:
+#                alert_txt = '' 
+#                user.senha = new
+#                #a linha abaixo grava as alterações no banco de dados
+#                db.session.commit()          
+#        else:
+#            alert = True
+#            alert_txt = 'Senha antiga inválida'     
+#    else:
+#        alert = True
+#        alert_txt = 'CPF não válido' 
+#    return render_template("./resetarsenha.html" ,alert_value = alert, txt_alert = alert_txt)
+    return render_template("./resetarsenha.html")
 
 @app.route("/login", methods = ['GET','POST'])
 def logar():

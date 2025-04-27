@@ -21,19 +21,12 @@
         <input id= "cpf"  type="text"  pattern="\d{11}" maxlength="11" placeholder="digite seu cpf (apenas números)" name="cpf" required>
         <br>
     
-        <label for="senha">Senha Antiga</label>
-        <input type="password" id="senha_old"  name="senha_antiga" required>
+        <label for="senha">E-mail</label>
+        <input type="email" id="email_user"  name="email_usuario" required>
         <br>
     
-        <label for="senha">Nova Senha</label>
-        <input type="password" id="senha_new"  name="senha_nova" required>
-        <br>
-    
-        <label for="senha">Confirmar Senha</label>
-        <input type="password" id="senha" name="senha_confirmada" required>
-        <br>
 
-        <button type="submit" id="btn_resetar">Resetar</button>
+        <button type="submit" id="btn_resetar">Confirmar</button>
     </form>
 
     <script src="{{ url_for('static', filename = 'script/resetarsenha.js')}}"></script>
