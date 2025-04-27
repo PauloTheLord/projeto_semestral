@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 # biblioteca responsável pelo gerenciamneto do login (precisa do pip install flask-login ) 
 from flask_login import LoginManager, login_user, UserMixin, login_required, logout_user, current_user
 
+#mais outro comentário de teste
 #outro comentário de teste
 # comentario teste
 # a linha abaixo inicia a variavel de aplicação
