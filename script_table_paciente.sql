@@ -1,5 +1,7 @@
 create database projeto_semestral;
 use projeto_semestral;
+
+
 create table cadastro_paciente(
 nome varchar(200) not null,
 cpf char(11) primary key,
@@ -11,7 +13,26 @@ cep char(8) not null,
 rua varchar(200) null,
 bairro varchar(200) null,
 cidade varchar(200) null,
-UF char(2) not null );
+UF char(2) not null 
+tipo_de_usuario varchar(100) not null );
+
+
+create table cadastro_medico(
+nome varchar(200) not null,
+cpf char(11) primary key,
+crm char(6) not null,
+uf_crm char(2) not null,
+data_nasc date not null,
+email varchar (100) not null,
+senha varchar(200) not null,
+telefone char(11) not null,
+cep char(8) not null,
+rua varchar(200) null,
+bairro varchar(200) null,
+cidade varchar(200) null,
+UF char(2) not null,
+tipo_de_usuario varchar(100) not null );
+
 
 
 
