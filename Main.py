@@ -155,11 +155,11 @@ def logar():
         return render_template('./login.html')
     #se o método da requisição for POST: 
     elif request.method == 'POST':
-        email_input = request.form['email']
+        cpf_input = request.form['cpf']
         senha_input = request.form['senha']
-        user = db.session.query(Cadastro_paciente).filter_by(email = email_input, senha = senha_input).first()
+        user = db.session.query(Cadastro_paciente).filter_by(cpf = cpf_input, senha = senha_input).first()
         if not user:
-            return "Email ou senha incorretos."
+            return "CPF ou senha incorretos."
         else:
             #realiza o login do usuário
             login_user(user)
