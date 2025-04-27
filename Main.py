@@ -18,7 +18,7 @@ lm = LoginManager(app)
 lm.login_view = '/login'
 
 app.config['SQLALCHEMY_DATABASE_URI']  = \
-    'mysql+pymysql://root:Lucas_62@localhost:3306/projeto_semestral'
+    'mysql+pymysql://root:we123@localhost:3306/projeto_semestral'
 
 #a linha abaixo instancia o banco de dados
 db = SQLAlchemy(app)
@@ -97,7 +97,7 @@ def add_banco():
 
         alert_txt = "Esse CPF já foi cadastrado"
 
-        return render_template("./cadastrar.html", alert_value = alert)
+        return render_template("./cadastrar.html", alert_value = alert, txt_alert = alert_txt)
 
     else:
         if senha_input != validsenha_input:
@@ -112,11 +112,7 @@ def add_banco():
 
             #a linha abaixo grava as alterações no banco de dados
             db.session.commit()
-
-    return render_template("./cadastrar.html", alert_value = alert, txt_alert = alert_txt)
-    #a linha abaixo grava as alterações no banco de dados
-    #db.session.commit()
-    #return redirect ("/login")
+            return redirect('/login')
     
     
 
