@@ -3,12 +3,17 @@ from flask  import Flask, render_template, request, redirect, flash, url_for
 from flask_sqlalchemy import SQLAlchemy
 # biblioteca responsável pelo gerenciamneto do login (precisa do pip install flask-login ) 
 from flask_login import LoginManager, login_user, UserMixin, login_required, logout_user, current_user
-import smtplib 
-import email.message
+import smtplib, ssl
+from random import randint  
+from email.message import EmailMessage
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
-#mais outro comentário de teste
-#outro comentário de teste
-# comentario teste
+smtp_sever = 'smtp.gmail.com' #email para a biblioteca smtplib funcionar 
+smtp_port = 587  #porta para a biblioteca smtplib funcionar
+username = 'medday004@gmail.com' #email criado para o projeto
+passaword = 'iryg zmqh ztuy hkxt' #senha criada pelo opção senhas de app do google
+
 # a linha abaixo inicia a variavel de aplicação
 #Se não colocar URI não tem como conectar o banco em pg html
 app = Flask(__name__)
@@ -58,7 +63,11 @@ def user_loader(cpf):
 def cadastrar_usuario():
     return render_template("./cadastrar.html")
 
-@app.route("/resetar")
+@app.route("/info_confirm")
+def confirmar_informacao():
+    return  render_template("./confirmarInfo.html")
+
+@app.route("/info_reset")
 def resetar_senha():
     return  render_template("./resetarsenha.html")
 
@@ -114,62 +123,92 @@ def add_banco():
             #a linha abaixo adiciona os dados para verificação da entrada de dados
             db.session.add(novo_usuario)
 
-
             #a linha abaixo grava as alterações no banco de dados
             db.session.commit()
             return redirect('/login')
     
+#rota paar confirmação de email e cpf    
+@app.route("/confirm_email", methods = ['POST'])
+def email_confirm():
+    cpf_input = request.form['cpf']
+    email_input = request.form['email_user']
+    #código que gera um número aleatório que servira como código de verificação
+    otp = randint(10000,99999)
     
+    user = db.session.query(Cadastro_paciente).filter_by(cpf = cpf_input, email = email_input).first()
+    if user:
+        alert = False
+        alert_txt = ""
+        #informação para enviar o email
+        msg = MIMEMultipart()
+        #assunto e email
+        msg['Subject'] = "Alterar Senha"
+        #email de quem vai enviar
+        msg['From'] = username
+        #email que recebera a mensagem
+        msg['To'] = email_input
+        #conteúdo do email
+        body = f"O Código para alterar a senha é: {otp}"
+        #configurações para enviu do email 
+        msg.attach(MIMEText(body, 'plain'))
+        context = ssl.create_default_context()
+        with smtplib.SMTP(smtp_sever,smtp_port) as smtp:
+            smtp.starttls(context=context)
+            smtp.login(username,passaword)
+            smtp.send_message(msg)
+        return render_template('./confirmarEmail.html', otp_code = otp, cpf_user = cpf_input ,email_user = email_input, alert_value = alert, txt_alert = alert_txt )
+    else:
+        otp = randint(10000,99999)
+        alert = True
+        alert_txt = "Cpf ou Email Invalidos"
+        return render_template('./confirmarInfo.html', alert_value = alert, txt_alert = alert_txt)
 
-
+@app.route("/confirm_code", methods = ['POST'])
+def code_confirm():
+    cpf_hidden = request.form['hidden_cpf']
+    email_hidden = request.form['hidden_email']
+    otp = request.form['code']
+    otp_input = request.form['email_code']
+    
+    if otp == otp_input:
+        alert = False
+        alert_txt = ""
+        return render_template('./resetarsenha.html', cpf = cpf_hidden, alert_value = alert, txt_alert = alert_txt)
+    else:
+        otp = randint(10000,99999)
+        msg = MIMEMultipart()
+        msg['Subject'] = "Alterar Senha"
+        msg['From'] = username
+        msg['To'] = email_hidden
+        body = f"O Código para alterar a senha é: {otp}"
+        msg.attach(MIMEText(body, 'plain'))
+        context = ssl.create_default_context()
+        with smtplib.SMTP(smtp_sever,smtp_port) as smtp:
+            smtp.starttls(context=context)
+            smtp.login(username,passaword)
+            smtp.send_message(msg)
+        alert = True
+        alert_txt = "Código errado, verifique seu email novamente"
+        return render_template('./confirmarEmail.html', alert_value = alert, txt_alert = alert_txt, otp_code = otp, cpf_user = cpf_hidden ,email_user = email_hidden,)
+    
 @app.route("/reset_password", methods = ['POST'])
 def reset_password():
-    
-    cpf_input = request.form['cpf']
-    email_usuario = request.form['email_usuario']
-    
-    # lxcn aapg omlu ogah
-    
-    msg = email.message.Message()
-    msg['Subject'] = "Alterar Senha"
-    msg['From'] = 'lucasdasilvafernandes27@gmail.com'
-    msg['To'] = email_usuario
-    password = 'lxcn aapg omlu ogah' 
-    msg.add_header('Content-Type', 'text/html')
-    msg.set_payload("./email.html")
+    cpf_input = request.form['cpf_user']
+    senha_input = request.form['new_password']
+    confirm_senha_input = request.form['new_password_confirme']
+    user = db.session.query(Cadastro_paciente).filter_by(cpf = cpf_input ).first()
 
-    s = smtplib.SMTP('smtp.gmail.com: 587')
-    s.starttls()
-    # Login Credentials for sending the mail
-    s.login(msg['From'], password)
-    s.sendmail(msg['From'], [msg['To']], msg.as_string().encode('utf-8'))
-    print('Email enviado')
-
-#    cpf_input = request.form['cpf']
-#    user = db.session.query(Cadastro_paciente).filter_by(cpf = cpf_input ).first()
-#
-#    if user:
-#        alert = False
-#        old = request.form['senha_antiga']
-#        old_senha = db.session.query(Cadastro_paciente).filter_by(cpf = cpf_input, senha = old).first()
-#        if old_senha:
-#            new = request.form['senha_nova']
-#            if new == old:
-#                alert = True
-#                alert_txt = 'Sua sennha nova não pode ser igual a atual' 
-#            else:
-#                alert_txt = '' 
-#                user.senha = new
-#                #a linha abaixo grava as alterações no banco de dados
-#                db.session.commit()          
-#        else:
-#            alert = True
-#            alert_txt = 'Senha antiga inválida'     
-#    else:
-#        alert = True
-#        alert_txt = 'CPF não válido' 
-#    return render_template("./resetarsenha.html" ,alert_value = alert, txt_alert = alert_txt)
-    return render_template("./resetarsenha.html")
+    if senha_input == confirm_senha_input:
+        alert = False
+        alert_txt = '' 
+        user.senha = confirm_senha_input
+        #a linha abaixo grava as alterações no banco de dados
+        db.session.commit()
+        return redirect("./login")
+    else:
+        alert = True
+        alert_txt = 'As senhas não são iguas'           
+    return render_template("./resetarsenha.html",cpf = cpf_input, alert_value = alert, txt_alert = alert_txt)
 
 @app.route("/login", methods = ['GET','POST'])
 def logar():

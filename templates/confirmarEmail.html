@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Email</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'style/confirmarEmail.css')}}">    
+</head>
+<body>
+    {% if alert_value %}
+        <div id="erro_div">
+            <h3>Erro</h3>
+            <hr>
+            <p>{{ txt_alert }}</p>
+            <button id="btn_dispose">Ok</button>        
+        </div>
+    {%endif%}
+
+    <form method="post" action="./confirm_code">
+        <input type="hidden" name="code" value="{{otp_code}}">
+        <input type="hidden" name="hidden_cpf" value="{{cpf_user}}">
+        <input type="hidden" name="hidden_email" value="{{email_user}}">
+        <label for="senha">Código</label>
+        
+        <input id= "code"  type="text" name="email_code" placeholder="Cheque o Email" maxlength="6">
+        <br>
+    <button type="submit" id="btn_confirmar">Confirmar</button>
+
+    </form>
+    <script src="{{ url_for('static', filename = 'script/confirmarEmail.js')}}"></script>
+</body>
+</html>

@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resetar Senha</title>
+    <title>Confirmar Informações</title>
     <link rel="stylesheet" href="{{ url_for('static', filename = 'style/resetarsenha.css')}}">
 </head>
 <body>
+
     {% if alert_value %}
         <div id="erro_div">
             <h3>Erro</h3>
@@ -16,22 +17,20 @@
         </div>
     {%endif%}
 
-    <form method="post" action="./reset_password">
-        
-        <input type="hidden" name="cpf_user" value="{{cpf}}">
-        <p>{{cpf_user}}</p>
-        <label for="senha">Senha</label>
-        <input id= "nova_senha"  type="text" name="new_password" required>
+    
+    <form method="post" action="./confirm_email">
+        <label for="senha">CPF</label>
+        <input id= "cpf"  type="text"  pattern="\d{11}" maxlength="11" placeholder="digite seu cpf (apenas números)" name="cpf" required>
         <br>
     
-        <label for="senha">Confirmar Senha</label>
-        <input type="text" id="email_user"  name="new_password_confirme" required>
+        <label for="senha">E-mail</label>
+        <input type="email" id="email" name="email_user">
         <br>
     
 
         <button type="submit" id="btn_resetar">Confirmar</button>
     </form>
 
-    <script src="{{ url_for('static', filename = 'script/resetarsenha.js')}}"></script>
+    <script src="{{ url_for('static', filename = 'script/confirmarInfo.js')}}"></script>
 </body>
 </html>
