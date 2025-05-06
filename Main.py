@@ -23,26 +23,30 @@ lm = LoginManager(app)
 lm.login_view = '/login'
 
 app.config['SQLALCHEMY_DATABASE_URI']  = \
-    'mysql+pymysql://root:Lucas_62@localhost:3306/projeto_semestral'
+    'mysql+pymysql://root:we123@localhost:3306/projeto_semestral'
 
 #a linha abaixo instancia o banco de dados
 db = SQLAlchemy(app)
 
+#usando o conceito de herança
+class UsuarioBase(UserMixin, db.Model):
+    __abstract__ = True  # Diz ao SQLAlchemy que essa classe não vira tabela
+    nome = db.Column(db.String(200), nullable=False)
+    senha = db.Column(db.String(200), nullable=False)
+    tipo_de_usuario = db.Column(db.String(100), nullable=True)
+
 
 #UserMixin permite que o flask_login reconhecer a seguinte classe de usuário
-class Cadastro_paciente(UserMixin, db.Model):
-    nome = db.Column(db.String(200), nullable = False)
+class Cadastro_paciente(UsuarioBase):
     cpf = db.Column(db.String(11), primary_key =True)
     email = db.Column(db.String(200),  nullable=False)
     data_nasc = db.Column(db.String(200),  nullable=False)
-    senha = db.Column(db.String(200), nullable=False)
     telefone = db.Column(db.String(11), nullable=False)
     cep = db.Column(db.String(8), nullable=False)
     rua = db.Column(db.String(200), nullable=True)
     bairro = db.Column(db.String(200), nullable=True)
     cidade = db.Column(db.String(200), nullable=True)
     UF = db.Column(db.String(2), nullable=False)
-    tipo_de_usuario = db.Column(db.String(100), nullable=True)
 
     #O UserMixin por padrão espera que exista um campo chamado id para usar como identificador,
     #mas já que cpf é o indentificador é necessáio usar a seguinte função para mudar o identificador padrão 
@@ -51,26 +55,13 @@ class Cadastro_paciente(UserMixin, db.Model):
 
 
 #UserMixin permite que o flask_login reconhecer a seguinte classe de usuário
-class Cadastro_medico(UserMixin, db.Model):
-    nome = db.Column(db.String(200), nullable = False)
-    cpf = db.Column(db.String(11), primary_key =True)
-    crm = db.Column(db.String(6), nullable =False)
-    uf_crm = db.Column(db.String(2), nullable =False)
-    email = db.Column(db.String(200),  nullable=False)
-    data_nasc = db.Column(db.String(200),  nullable=False)
-    senha = db.Column(db.String(200), nullable=False)
-    telefone = db.Column(db.String(11), nullable=False)
-    cep = db.Column(db.String(8), nullable=False)
-    rua = db.Column(db.String(200), nullable=True)
-    bairro = db.Column(db.String(200), nullable=True)
-    cidade = db.Column(db.String(200), nullable=True)
-    UF = db.Column(db.String(2), nullable=False)
-    tipo_de_usuario = db.Column(db.String(100), nullable=True)
+class Cadastro_adm (UsuarioBase):
+    matricula = db.Column(db.String(11), primary_key =True)
 
     #O UserMixin por padrão espera que exista um campo chamado id para usar como identificador,
     #mas já que cpf é o indentificador é necessáio usar a seguinte função para mudar o identificador padrão 
     def get_id(self):
-        return str(self.cpf)
+        return str(self.matricula)
     
 
 
@@ -79,16 +70,12 @@ class Cadastro_medico(UserMixin, db.Model):
 def user_loader(cpf):
     usuario = db.session.query(Cadastro_paciente).filter_by(cpf = cpf).first()
     if not usuario:
-        usuario = db.session.query(Cadastro_medico).filter_by(cpf = cpf).first()
+        usuario = db.session.query(Cadastro_adm).filter_by(matricula = cpf).first()
     return usuario
 
 @app.route("/cadastrar")
 def cadastrar_usuario():
     return render_template("./cadastrar.html")
-
-@app.route("/cadastrar_medico")
-def cadastrar_medico():
-    return render_template("./cadastrar_medico.html")
 
 @app.route("/resetar")
 def resetar_senha():
@@ -98,7 +85,7 @@ def resetar_senha():
 #faz com que essa rota só possa ser acessada se estiver logado
 @login_required
 def home():
-    return render_template("./home.html", tipo=current_user.tipo_de_usuario, nome = current_user.nome, email = current_user.email, crm=getattr(current_user, 'crm', None))
+    return render_template("./home.html", tipo=current_user.tipo_de_usuario, nome = current_user.nome, email = getattr(current_user, 'email', None), matricula=getattr(current_user, 'matricula', None))
 
 @app.route('/logout')
 @login_required
@@ -152,59 +139,6 @@ def add_banco():
             db.session.commit()
             return redirect('/login')
     
-    
-
-
-@app.route("/add_medico", methods = ['POST'])
-def add_medico():
-    nome_input = request.form['nome']
-    cpf_input = request.form['cpf']
-    crm_input = request.form['crm']
-    uf_crm_input = request.form['crm-uf']
-    email_input = request.form['email']
-    data_input = request.form['datanasc']
-    tel_input = request.form['telefone']
-    senha_input = request.form['senha']
-    validsenha_input = request.form['validsenha']
-    cep_input = request.form['cep']
-    rua_input = request.form['rua']
-    bairro_input = request.form['bairro']
-    cidade_input = request.form['cidade']
-    estado_input = request.form['UF']
-    usuario_input = request.form['tipo_de_usuario']
-        
-    novo_medico = Cadastro_medico(nome = nome_input, cpf = cpf_input, crm = crm_input, uf_crm = uf_crm_input, data_nasc = data_input,
-            email = email_input, senha = senha_input, telefone = tel_input, cep = cep_input, rua =  rua_input,
-            bairro = bairro_input, cidade = cidade_input, UF = estado_input, tipo_de_usuario = usuario_input)
-
-
-    #a  linha abaixo é equivalente a um select no banco, onde na clausula where vai o cpf imputado
-    user = db.session.query(Cadastro_medico).filter_by(cpf = cpf_input ).first()
-    if user:
-        alert = True
-
-        alert_txt = "Esse CPF já foi cadastrado"
-
-        return render_template("./cadastrar.html", alert_value = alert, txt_alert = alert_txt)
-
-    else:
-        if senha_input != validsenha_input:
-            alert = True
-            alert_txt = "As senhas não coincidem"
-        else:    
-            alert = False
-            alert_txt = ""
-            #a linha abaixo adiciona os dados para verificação da entrada de dados
-            db.session.add(novo_medico)
-
-
-            #a linha abaixo grava as alterações no banco de dados
-            db.session.commit()
-            return redirect('/login')
-    
-
-
-
 
 
 @app.route("/reset_password", methods = ['POST'])
@@ -267,7 +201,7 @@ def logar():
         senha_input = request.form['senha']
         user = db.session.query(Cadastro_paciente).filter_by(cpf = cpf_input, senha = senha_input).first()
         if not user:
-            user = db.session.query(Cadastro_medico).filter_by(cpf = cpf_input, senha = senha_input).first()
+            user = db.session.query(Cadastro_adm).filter_by(matricula = cpf_input, senha = senha_input).first()
 
         if not user:
              return "CPF ou senha incorretos."

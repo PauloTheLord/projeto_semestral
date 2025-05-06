@@ -7,8 +7,8 @@
 </head>
 <body>
 
-    {% if tipo == 'medico' %}
-    <h1>Olá doutor(a) {{ nome }}, seu CRM é {{ crm }}</h1>
+    {% if tipo == 'usuario_adm' %}
+    <h1>Olá {{ nome }}, sua matricula é {{ matricula }}</h1>
 {% else %}
 
     <h1>Olá {{nome}}, seu email é {{email}}</h1>
