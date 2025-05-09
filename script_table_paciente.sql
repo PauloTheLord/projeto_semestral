@@ -13,7 +13,7 @@ cep char(8) not null,
 rua varchar(200) null,
 bairro varchar(200) null,
 cidade varchar(200) null,
-UF char(2) not null 
+UF char(2) not null, 
 tipo_de_usuario varchar(100) not null );
 
 
