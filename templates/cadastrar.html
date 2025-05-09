@@ -32,6 +32,12 @@
                 <form method="post" action="./add"  onsubmit="return validarSenhas()">
 
                     <div class="step active">
+
+                        <div>
+                            <input id="tipo_de_usuario" type="hidden" name="tipo_de_usuario" value="paciente">
+                        </div>
+
+
                         <div class="group-label-input">
                             <label for="nome">Nome</label>
                             <input id="nome" type="text"  required placeholder="Digite seu nome e sobrenome" name="nome" class="textbox">

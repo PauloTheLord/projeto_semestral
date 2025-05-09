@@ -28,19 +28,24 @@ lm = LoginManager(app)
 lm.login_view = '/login'
 
 app.config['SQLALCHEMY_DATABASE_URI']  = \
-    'mysql+pymysql://root:Lucas_62@localhost:3306/projeto_semestral'
+    'mysql+pymysql://root:we123@localhost:3306/projeto_semestral'
 
 #a linha abaixo instancia o banco de dados
 db = SQLAlchemy(app)
 
+#usando o conceito de herança
+class UsuarioBase(UserMixin, db.Model):
+    __abstract__ = True  # Diz ao SQLAlchemy que essa classe não vira tabela
+    nome = db.Column(db.String(200), nullable=False)
+    senha = db.Column(db.String(200), nullable=False)
+    tipo_de_usuario = db.Column(db.String(100), nullable=True)
+
 
 #UserMixin permite que o flask_login reconhecer a seguinte classe de usuário
-class Cadastro_paciente(UserMixin, db.Model):
-    nome = db.Column(db.String(200), nullable = False)
+class Cadastro_paciente(UsuarioBase):
     cpf = db.Column(db.String(11), primary_key =True)
     email = db.Column(db.String(200),  nullable=False)
     data_nasc = db.Column(db.String(200),  nullable=False)
-    senha = db.Column(db.String(200), nullable=False)
     telefone = db.Column(db.String(11), nullable=False)
     cep = db.Column(db.String(8), nullable=False)
     rua = db.Column(db.String(200), nullable=True)
@@ -53,10 +58,24 @@ class Cadastro_paciente(UserMixin, db.Model):
     def get_id(self):
         return str(self.cpf)
 
+
+#UserMixin permite que o flask_login reconhecer a seguinte classe de usuário
+class Cadastro_adm (UsuarioBase):
+    matricula = db.Column(db.String(11), primary_key =True)
+
+    #O UserMixin por padrão espera que exista um campo chamado id para usar como identificador,
+    #mas já que cpf é o indentificador é necessáio usar a seguinte função para mudar o identificador padrão 
+    def get_id(self):
+        return str(self.matricula)
+    
+
+
 #variável que carrega o usuário atravez da sua busca do seu cpf
 @lm.user_loader
 def user_loader(cpf):
     usuario = db.session.query(Cadastro_paciente).filter_by(cpf = cpf).first()
+    if not usuario:
+        usuario = db.session.query(Cadastro_adm).filter_by(matricula = cpf).first()
     return usuario
 
 @app.route("/cadastrar")
@@ -75,7 +94,7 @@ def resetar_senha():
 #faz com que essa rota só possa ser acessada se estiver logado
 @login_required
 def home():
-    return render_template("./home.html", nome = current_user.nome, email = current_user.email)
+    return render_template("./home.html", tipo=current_user.tipo_de_usuario, nome = current_user.nome, email = getattr(current_user, 'email', None), matricula=getattr(current_user, 'matricula', None))
 
 @app.route('/logout')
 @login_required
@@ -98,10 +117,11 @@ def add_banco():
     bairro_input = request.form['bairro']
     cidade_input = request.form['cidade']
     estado_input = request.form['UF']
+    usuario_input = request.form['tipo_de_usuario']
         
     novo_usuario = Cadastro_paciente(nome = nome_input, cpf = cpf_input, data_nasc = data_input,
             email = email_input, senha = senha_input, telefone = tel_input, cep = cep_input, rua =  rua_input,
-            bairro = bairro_input, cidade = cidade_input, UF = estado_input)
+            bairro = bairro_input, cidade = cidade_input, UF = estado_input, tipo_de_usuario = usuario_input)
 
 
     #a  linha abaixo é equivalente a um select no banco, onde na clausula where vai o cpf imputado
@@ -221,7 +241,10 @@ def logar():
         senha_input = request.form['senha']
         user = db.session.query(Cadastro_paciente).filter_by(cpf = cpf_input, senha = senha_input).first()
         if not user:
-            return "CPF ou senha incorretos."
+            user = db.session.query(Cadastro_adm).filter_by(matricula = cpf_input, senha = senha_input).first()
+
+        if not user:
+             return "CPF ou senha incorretos."
         else:
             #realiza o login do usuário
             login_user(user)

@@ -1,5 +1,7 @@
 create database projeto_semestral;
 use projeto_semestral;
+
+
 create table cadastro_paciente(
 nome varchar(200) not null,
 cpf char(11) primary key,
@@ -11,7 +13,19 @@ cep char(8) not null,
 rua varchar(200) null,
 bairro varchar(200) null,
 cidade varchar(200) null,
-UF char(2) not null );
+UF char(2) not null 
+tipo_de_usuario varchar(100) not null );
+
+
+create table cadastro_adm (
+nome varchar(200) not null,
+matricula char(11) primary key,
+senha varchar(200) not null,
+tipo_de_usuario varchar(100) not null );
+
+
+insert into cadastro_adm 
+values ('Administrador_001', '12345678911', 'admin', 'usuario_adm');
 
 
 
