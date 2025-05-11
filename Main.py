@@ -1,5 +1,5 @@
 #COMENTARIO DE TESTE
-from flask  import Flask, render_template, request, redirect, flash, url_for
+from flask  import Flask, render_template, request, redirect, flash, url_for, session
 #permissão: pip install flask-sqlalchemy
 from flask_sqlalchemy import SQLAlchemy
 # biblioteca responsável pelo gerenciamneto do login (precisa do pip install flask-login ) 
@@ -29,7 +29,7 @@ lm = LoginManager(app)
 lm.login_view = '/login'
 
 app.config['SQLALCHEMY_DATABASE_URI']  = \
-    'mysql+pymysql://root:Lucas_62@localhost:3306/projeto_semestral'
+    'mysql+pymysql://root:we123@localhost:3306/projeto_semestral'
 
 #a linha abaixo instancia o banco de dados
 db = SQLAlchemy(app)
@@ -69,7 +69,13 @@ class Cadastro_adm (UsuarioBase):
     def get_id(self):
         return str(self.matricula)
     
-
+class Consultas(UserMixin, db.Model):
+    id_consulta = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    cpf_paciente = db.Column(db.String(11), nullable=False)
+    data_consulta = db.Column(db.String(200),  nullable=False)
+    hora_consulta = db.Column(db.String(200),  nullable=False)
+    especialidade = db.Column(db.String(100),  nullable=False)
+    medico_responsavel = db.Column(db.String(200),  nullable=False)
 
 #variável que carrega o usuário atravez da sua busca do seu cpf
 @lm.user_loader
@@ -247,9 +253,34 @@ def logar():
         if not user:
              return "CPF ou senha incorretos."
         else:
+            
             #realiza o login do usuário
             login_user(user)
             #redireciona para home depois do login
             return redirect(url_for('home')) 
+        
+@app.route('/agendar_consulta')
+@login_required
+def agendar_consulta():
+    return render_template('./agendar_consulta.html')
+
+@app.route('/agendar_banco', methods= ['POST'])
+@login_required
+def agendar_banco():
+    
+    cpf_paciente = current_user.get_id()
+    data_consulta = request.form['data']
+    hora_consulta = request.form['hora']
+    especialidade = request.form['especialidade']
+    medico = request.form['medico']
+    nova_consulta = Consultas(cpf_paciente = cpf_paciente, data_consulta=data_consulta, 
+                              hora_consulta=hora_consulta, especialidade=especialidade, 
+                              medico_responsavel=medico )
+    db.session.add(nova_consulta)
+
+            #a linha abaixo grava as alterações no banco de dados
+    db.session.commit()
+    return redirect(url_for('home'))
+
 
 app.run(debug=True)

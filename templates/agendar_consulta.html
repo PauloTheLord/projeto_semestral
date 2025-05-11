@@ -7,5 +7,46 @@
 </head>
 <body>
     
+ <form action="/agendar_banco" method="post">
+
+            <label for="especialidade" >Especialidade</label>
+            <select name="especialidade" id="especialidade" required >
+                 
+                                <option value="Clínico Geral">Clínico Geral</option>
+                                <option value="Psicologia">Psicologia</option>
+                                <option value="Dermatologia">Dermatologia</option>
+                                <option value="Ginecologia">Ginecologia</option>
+                                <option value="Oftalmologia">Oftalmologia</option>            
+            </select>
+            <br>
+
+            <label for="medico">Médico</label>
+            <select name="medico" id="medico" required>
+                                <option value="Dra Andressa">Dra Andressa</option>
+                                <option value="Dr Lucas">Dr Lucas</option>
+                                <option value="Dr Vitor">Dr Vitor</option>
+                                <option value="Dr Caio">Dr Caio</option>
+                                <option value="Dr Paulo">Dr Paulo</option>
+            </select>
+
+            <label for="data">Escolha o dia da consulta</label>
+            <input type="date" id="datanasc"  name="data" required  min="2025-05-26" max="2025-06-30">
+
+
+  <label for="hora">Médico</label>
+            <select name="hora" id="hora" required>
+                                <option value="07:00">07:00</option>
+                                <option value="9:30">9:30</option>
+                                <option value="12:00">12:00</option>
+                                <option value="15:00">15:00</option>
+                                <option value="16:30">16:30</option>
+            </select>
+
+<button  type="submit">Agendar</button>
+
+ </form>
+
+
+
 </body>
 </html>

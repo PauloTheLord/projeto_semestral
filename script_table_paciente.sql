@@ -27,6 +27,14 @@ tipo_de_usuario varchar(100) not null );
 insert into cadastro_adm 
 values ('Administrador_001', '12345678911', 'admin', 'usuario_adm');
 
+create table consultas (
+id_consulta INT AUTO_INCREMENT PRIMARY KEY,
+cpf_paciente char(11), 
+data_consulta date,
+hora_consulta varchar(100),
+especialidade varchar(100),
+medico_responsavel varchar(150) );
+
 
 
 
