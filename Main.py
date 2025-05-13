@@ -280,7 +280,14 @@ def agendar_banco():
 
             #a linha abaixo grava as alterações no banco de dados
     db.session.commit()
-    return redirect(url_for('home'))
+    return redirect(url_for('meus_agendamentos'))
 
+
+@app.route ('/lista_agendamento')
+@login_required
+def meus_agendamentos():
+    cpf_logado = current_user.get_id()
+    agendamentos = Consultas.query.filter_by(cpf_paciente=cpf_logado).order_by(Consultas.data_consulta).all()
+    return render_template('./meus_agendamentos.html', agendamentos = agendamentos)
 
 app.run(debug=True)

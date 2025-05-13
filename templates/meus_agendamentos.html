@@ -4,8 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+            table,tr,th,td{
+            border: 1px solid #A62B1F;
+
+        }
+    </style>
 </head>
 <body>
-    
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>Especialidade</th>
+                <th>Médico</th>
+                <th>Data</th>
+                <th>Hora</th>
+            </tr>
+
+            {% for x in agendamentos %}  
+            <tr>
+                 <th>{{x.especialidade}}</th>
+                <th>{{x.medico_responsavel}}</th>
+                <th>{{x.data_consulta}}</th>
+                <th>{{x.hora_consulta}}</th>
+            </tr>
+            {%  endfor %}
+
+        </thead>
+
+    </table>
+
+    <br>
+    <a href="/">Voltar</a>
 </body>
 </html>
