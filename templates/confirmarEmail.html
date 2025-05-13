@@ -20,11 +20,30 @@
         <input type="hidden" name="code" value="{{otp_code}}">
         <input type="hidden" name="hidden_cpf" value="{{cpf_user}}">
         <input type="hidden" name="hidden_email" value="{{email_user}}">
-        <label for="senha">Código</label>
         
-        <input id= "code"  type="text" name="email_code" placeholder="Cheque o Email" maxlength="6">
-        <br>
-    <button type="submit" id="btn_confirmar">Confirmar</button>
+        <div class="container">                
+            <div id="image_local">
+                <img src="/static/assets/img/passaword.jpg" id="consulta_img"></img>
+            </div>
+            
+            <div id="confim_local">
+                <div class="card-confirm">
+
+                    <div class="group-titulo-logo">
+                        <img src="/static/assets/img/logo-bg-removed.png" alt="" class="img-logo">
+                    </div>
+
+                    <div class="group-label-input">
+                        <label for="senha">Código</label>       
+                        <input id= "code"  type="text" name="email_code" placeholder="Cheque o Email" maxlength="6" class="textbox">
+                    </div>
+                            
+                    
+                    <button type="submit" id="btn_confirmar" class="btn_confirm">Confirmar</button>
+                </div>
+            </div>
+        </div>
+
 
     </form>
     <script src="{{ url_for('static', filename = 'script/confirmarEmail.js')}}"></script>

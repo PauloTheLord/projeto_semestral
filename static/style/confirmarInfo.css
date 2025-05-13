@@ -34,14 +34,14 @@
     padding: 0;
     overflow: hidden;
 }
-#confim_local{
+#info_local{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     width: 100%;
 }
-.card-confirm{
+.card-info{
     display: flex;
     flex-direction: column;
     align-items: center;

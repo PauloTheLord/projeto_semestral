@@ -20,16 +20,31 @@
         
         <input type="hidden" name="cpf_user" value="{{cpf}}">
         <p>{{cpf_user}}</p>
-        <label for="senha">Senha</label>
-        <input id= "nova_senha"  type="text" name="new_password" required>
-        <br>
-    
-        <label for="senha">Confirmar Senha</label>
-        <input type="text" id="email_user"  name="new_password_confirme" required>
-        <br>
-    
 
-        <button type="submit" id="btn_resetar">Confirmar</button>
+        <div class="container">
+
+            <div id="image_local">
+                <img src="/static/assets/img/passaword.jpg" id="consulta_img"></img>
+            </div>
+            <div id="passaword_local">
+                <div class="card-passaword">
+                    <div class="group-titulo-logo">
+                        <img src="/static/assets/img/logo-bg-removed.png" alt="" class="img-logo">
+                    </div>
+                    <div class="group-label-input">
+                        <label for="senha">Senha</label>
+                        <input id= "nova_senha"  type="password" name="new_password" required class="textbox"> 
+                    </div>
+                    <div class="group-label-input">
+                        <label for="senha">Confirmar Senha</label>
+                    <input type="password" id="email_user"  name="new_password_confirme" required class="textbox">
+                    </div>      
+                    <button type="submit" id="btn_resetar" class="btn_confirm">Confirmar</button>
+                
+                </div>
+            </div>               
+        </div>
+        
     </form>
 
     <script src="{{ url_for('static', filename = 'script/resetarsenha.js')}}"></script>

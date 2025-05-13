@@ -151,6 +151,7 @@ def add_banco():
 #rota paar confirmação de email e cpf    
 @app.route("/confirm_email", methods = ['POST'])
 def email_confirm():
+
     cpf_input = request.form['cpf']
     email_input = request.form['email_user']
     #código que gera um número aleatório que servira como código de verificação

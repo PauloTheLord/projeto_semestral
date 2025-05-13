@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-    --primary-color: #3473E9;
+    --primary-color: #3473E9 ;
     --secondary-color: #58B3FF;
     --substitute-color: #5DDFFF;
     --highlight-color: #5728A8;
+    --back-ground:#FEFCF9;
 }
 
 * {
@@ -14,6 +15,32 @@
     font-family: "Montserrat", sans-serif;
 }
 
+.container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+.img-logo{
+    height: 5vh;
+}
+#cadastro_local{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+#image_local{
+    height: 100vh;
+    width: 100vh;
+}
+#consulta_img{
+    height: 100%;
+    height: 100%;
+}
 #erro_div{
     background-color: aliceblue;
     text-align: center;
@@ -31,7 +58,7 @@
     flex-direction: column;
     align-items: center;
     border-radius: 25px;
-    box-shadow: 5px 5px 10px;
+    box-shadow: 4px 8px 20px 0px;
     padding: 20px 20px;
     width: 550px;
 }
@@ -70,3 +97,13 @@
 .part-1 .card-cadastro form .textbox:focus {
     outline: none;
 }
+.btn_step{
+    background-color: var(--primary-color);
+    color: var(--back-ground);
+    border: var(--back-ground);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px;
+    font-weight: bold;    
+}
+

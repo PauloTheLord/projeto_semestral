@@ -14,59 +14,58 @@
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
 }
-#erro_div{
-    background-color: aliceblue;
-    text-align: center;
-    padding: 5px;
-    height: 200px;
-    width: 400px;
-    position: absolute;
-    left: 80vh;
-    top: 30vh;
-    border-radius: 20px;
-}
 
 .container{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    overflow: hidden;
-}
-#confim_local{
+    background-image: url(/static/assets/img/login_img.jpeg);
+    filter: blur(5px);
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    width: 100%;
+    padding: 0;
+    position: relative;
 }
-.card-confirm{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 25px;
-    box-shadow: 4px 8px 20px 0px;
-    padding: 20px 20px;
-    width: 550px;
+.group-titulo-logo{
+    transform: translate(-50%, -50%);
+    position: absolute;
+    left: 50%;
+    top: 12%;
+
 }
 .img-logo{
     height: 5vh;
 }
-
-.group-label-input {
+#login_local{
+    background-color: var(--back-ground);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 5px;
+    margin: 5px;
+    padding: 30px;
+    width: 90vh;
+    height: 50vh;
+    border-radius: 5px;
+    box-shadow: 4px 8px 20px 0px;
+    position:absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+}
+.group-label-input{
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+    margin: 20px;
 }
+
 .group-label-input .textbox {
-    width: 300px;
     padding: 5px 10px;
     border: 2px solid var(--secondary-color);
     border-radius: 15px;
 }
 
-.btn_confirm{
+.btn_enter{
     background-color: var(--primary-color);
     color: var(--back-ground);
     border: var(--back-ground);
@@ -75,11 +74,4 @@
     margin: 5px;
     font-weight: bold;    
 }
-#image_local{
-    height: 100vh;
-    width: 100vh;
-}
-#consulta_img{
-    height: 100%;
-    height: 100%;
-}
+
