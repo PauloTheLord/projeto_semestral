@@ -3,8 +3,10 @@
 :root {
     --primary-color: #3473E9;
     --secondary-color: #58B3FF;
+    --terciary-color: #205cdd;
     --substitute-color: #5DDFFF;
     --highlight-color: #5728A8;
+    --background-color: #FEFCF9;
 }
 
 * {
@@ -12,4 +14,50 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    padding: 40px 100px 40px 50px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .logo {
+    width: 290px;
+}
+
+header nav {
+
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    width: 400px;
+    justify-content: space-between;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: var(--terciary-color);
+    font-size: 27px;
+    font-weight: 500;
+    border-radius: 13px;
+    padding: 12px 17px;
+    transition: 0.3s;
+}
+
+header nav ul li a:hover {
+    background-color: var(--terciary-color);
+    color: var(--background-color);
+}
+
+.container {
+    padding: 100px 50px;
 }
