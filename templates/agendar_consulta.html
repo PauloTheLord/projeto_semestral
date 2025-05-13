@@ -1,11 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Agendamento de Consulta</title>
 </head>
 <body>
-    
+
+    <form action="/agendar_banco" method="post">
+        <label for="especialidade">Especialidade</label>
+        <select name="especialidade" id="especialidade" required>
+            <option value="">-- Selecione --</option>
+            <option value="Clínico Geral">Clínico Geral</option>
+            <option value="Psicologia">Psicologia</option>
+            <option value="Dermatologia">Dermatologia</option>
+            <option value="Ginecologia">Ginecologia</option>
+            <option value="Oftalmologia">Oftalmologia</option>            
+        </select>
+        <br><br>
+
+        <label for="medico">Médico</label>
+        <select name="medico" id="medico" required>
+            <option value="">-- Selecione uma especialidade --</option>
+        </select>
+        <br><br>
+
+        <label for="data">Escolha o dia da consulta</label>
+        <input type="date" id="datanasc" name="data" required min="2025-05-26" max="2025-06-30">
+        <br><br>
+
+        <label for="hora">Horário</label>
+        <select name="hora" id="hora" required>
+            <option value="07:00">07:00</option>
+            <option value="9:30">9:30</option>
+            <option value="12:00">12:00</option>
+            <option value="15:00">15:00</option>
+            <option value="16:30">16:30</option>
+        </select>
+        <br><br>
+
+        <button type="submit">Agendar</button>
+    </form>
+
+    <br>
+    <a href="/">Voltar</a>
+
+
+
+    <script>
+        const medicosPorEspecialidade = {
+            "Clínico Geral": ["Dra Andressa", "Dr Lucas", "Dr Paulo", "Dr Vitor", "Dr Caio"],
+            "Psicologia": ["Dr Lucas"],
+            "Dermatologia": ["Dr Paulo", "Dr Caio"],
+            "Ginecologia": ["Dra Andressa"],
+            "Oftalmologia": ["Dr Vitor"]
+        };
+
+        const especialidadeSelect = document.getElementById("especialidade");
+        const medicoSelect = document.getElementById("medico");
+
+        especialidadeSelect.addEventListener("change", function () {
+            const especialidadeSelecionada = this.value;
+            const medicos = medicosPorEspecialidade[especialidadeSelecionada] || [];
+
+            // Limpa as opções anteriores
+            medicoSelect.innerHTML = "";
+
+            // Adiciona a opção padrão
+            const defaultOption = document.createElement("option");
+            defaultOption.value = "";
+            defaultOption.textContent = "-- Selecione --";
+            medicoSelect.appendChild(defaultOption);
+
+            // Adiciona as opções correspondentes
+            medicos.forEach(function (medico) {
+                const option = document.createElement("option");
+                option.value = medico;
+                option.textContent = medico;
+                medicoSelect.appendChild(option);
+            });
+        });
+    </script>
+
 </body>
 </html>
