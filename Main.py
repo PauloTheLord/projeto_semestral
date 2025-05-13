@@ -29,7 +29,7 @@ lm = LoginManager(app)
 lm.login_view = '/login'
 
 app.config['SQLALCHEMY_DATABASE_URI']  = \
-    'mysql+pymysql://root:we123@localhost:3306/projeto_semestral'
+    'mysql+pymysql://root:Lucas_62@localhost:3306/projeto_semestral'
 
 #a linha abaixo instancia o banco de dados
 db = SQLAlchemy(app)
@@ -103,6 +103,9 @@ def resetar_senha():
 def home():
     return render_template("./home.html", tipo=current_user.tipo_de_usuario, nome = current_user.nome, email = getattr(current_user, 'email', None), matricula=getattr(current_user, 'matricula', None))
 
+@app.route("/carteirinha")
+def card_user():
+    return render_template("./carteirinha.html")
 @app.route('/logout')
 @login_required
 def logout():
