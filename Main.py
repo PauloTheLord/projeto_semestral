@@ -29,7 +29,7 @@ lm = LoginManager(app)
 lm.login_view = '/login'
 
 app.config['SQLALCHEMY_DATABASE_URI']  = \
-    'mysql+pymysql://root:Lucas_62@localhost:3306/projeto_semestral'
+    'mysql+pymysql://root:we123@localhost:3306/projeto_semestral'
 
 #a linha abaixo instancia o banco de dados
 db = SQLAlchemy(app)
@@ -293,5 +293,36 @@ def meus_agendamentos():
     cpf_logado = current_user.get_id()
     agendamentos = Consultas.query.filter_by(cpf_paciente=cpf_logado).order_by(Consultas.data_consulta).all()
     return render_template('./meus_agendamentos.html', agendamentos = agendamentos)
+
+@app.route('/editar_consulta/<int:id_consulta>')
+@login_required
+def editar_consulta(id_consulta):
+
+    consulta_selecionada = Consultas.query.filter_by(id_consulta = id_consulta).first()
+
+    return render_template('./editar_consulta.html', consulta_selecionada = consulta_selecionada)
+
+
+@app.route('/reagendar_banco', methods = ['POST'])
+@login_required
+def reagendar_banco():
+
+    consulta_reagendada = Consultas.query.filter_by(id_consulta = request.form['txtId']).first()
+    
+    consulta_reagendada.data_consulta = request.form['txtData']
+    consulta_reagendada.hora_consulta = request.form['txtHora']
+
+    db.session.add(consulta_reagendada)
+    db.session.commit()
+
+    return redirect('/lista_agendamento')
+
+@app.route('/excluir_consulta/<int:id_consulta>')
+@login_required
+def excluir_consulta(id_consulta):
+    Consultas.query.filter_by(id_consulta=id_consulta).delete()
+    db.session.commit()
+    return redirect('/lista_agendamento')
+
 
 app.run(debug=True)

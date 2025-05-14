@@ -25,10 +25,14 @@
 
             {% for x in agendamentos %}  
             <tr>
-                 <th>{{x.especialidade}}</th>
-                <th>{{x.medico_responsavel}}</th>
-                <th>{{x.data_consulta}}</th>
-                <th>{{x.hora_consulta}}</th>
+                 <td>{{x.especialidade}}</td>
+                <td>{{x.medico_responsavel}}</td>
+                <td>{{x.data_consulta}}</td>
+                <td>{{x.hora_consulta}}</td>
+                <td>
+                        <a href="{{ url_for('editar_consulta', id_consulta = x.id_consulta)}}">Reagendar</a>
+                        <a href="{{ url_for('excluir_consulta', id_consulta = x.id_consulta)}}">Desmarcar</a>
+                     </td>
             </tr>
             {%  endfor %}
 
