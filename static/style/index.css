@@ -63,8 +63,12 @@ header nav ul li a:hover {
 .container .part1 .texto-principal {
     font-size: 60px;
     font-weight: 500;
-    width: 50%;
+    width: 60%;
     margin-bottom: 60px;
+}
+
+.container .part1 .destaque {
+    color: var(--primary-color);
 }
 
 .container .part1 .link-comecar {
