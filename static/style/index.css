@@ -32,10 +32,6 @@ header .logo {
     width: 290px;
 }
 
-header nav {
-
-}
-
 header nav ul {
     list-style: none;
     display: flex;
@@ -62,10 +58,6 @@ header nav ul li a:hover {
     padding: 100px 100px 0 100px;
     display: flex;
     align-items: center;
-}
-
-.container .part1 {
-
 }
 
 .container .part1 .texto-principal {
