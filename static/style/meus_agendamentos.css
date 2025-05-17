@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --primary-color: #3473E9 ;
+    --secondary-color: #58B3FF;
+    --substitute-color: #5DDFFF;
+    --highlight-color: #5728A8;
+    --back-ground:#FEFCF9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+.nav_bar{
+    background-color: #3473E9;
+    width: 100%;
+    height: 7vh;
+    border-radius: 0 0 20px 20px;
+    display: flex;
+    flex-direction: row;
+}
+.nav_bar .back_btn{  
+    display: flex;
+    align-items: center; 
+}
+.nav_bar .back_btn a{  
+    color: var(--highlight-color);
+    font-size: 3vw;
+    text-decoration: none;
+    margin: 2px;
+}
+.nav_bar .div_txt{
+    font-size: 1.5vw;
+    position: relative;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;   
+}
+.nav_bar .div_txt .nav_txt{
+    color: var(--highlight-color);
+    font-weight: bold;
+}
+
+table,tr,th,td{
+    border: 1px solid #A62B1F;
+}
+.local_consultaInfo{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.local_consultaInfo .div_consultaInfo{
+    margin: 2%;
+    border: 4px solid var(--highlight-color);
+    border-radius: 10px;
+    width: 30%;
+    height: 25vh;
+    padding: 20px;
+}
+.local_consultaInfo .div_consultaInfo .especialidade_consulta{
+    margin-bottom: 5%;
+}
+.local_consultaInfo .div_consultaInfo .especialidade_consulta .especialidade_txt{
+    font-size: 1.3vw;
+}
+.local_consultaInfo .div_consultaInfo .info_consulta .info_txt{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 5px 0 5px 0;
+}
+.local_consultaInfo .div_consultaInfo .info_consulta .info_txt i{
+    color: var(--primary-color);
+    font-size: 1.5vw;
+    margin-right: 1%;
+}
+.local_consultaInfo .div_consultaInfo .info_consulta .info_txt p{
+    font-size: 1.3vw;
+}
+
+.local_consultaInfo .div_consultaInfo .edit_consulta{
+    height: 30%;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+
+}
+.local_consultaInfo .div_consultaInfo .edit_consulta a{
+    margin: 0 1% 0 1%;
+    text-decoration: none;
+}
+.local_consultaInfo .div_consultaInfo .edit_consulta .reagendar_a{
+    background-color: var(--highlight-color);
+    border-radius: 5px;
+    color: var(--back-ground);
+    padding: 1px;
+}
+

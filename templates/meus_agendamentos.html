@@ -3,44 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-            table,tr,th,td{
-            border: 1px solid #A62B1F;
-
-        }
-    </style>
+    <title>Meus agendamentos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'style/meus_agendamentos.css')}}">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
-<body>
-    <table>
-
-        <thead>
-
-            <tr>
-                <th>Especialidade</th>
-                <th>Médico</th>
-                <th>Data</th>
-                <th>Hora</th>
-            </tr>
-
+<body>      
+            <nav class="nav_bar">
+                <div class="back_btn">
+                    <a href="/" class="bi bi-arrow-left"></a>
+                </div>
+            <div class="div_txt">
+                <h1 class="nav_txt">Meus Agendamentos</h1>
+            </div>
+            <div></div>
+            
+        </nav>
+        <div class="local_consultaInfo">
             {% for x in agendamentos %}  
-            <tr>
-                 <td>{{x.especialidade}}</td>
-                <td>{{x.medico_responsavel}}</td>
-                <td>{{x.data_consulta}}</td>
-                <td>{{x.hora_consulta}}</td>
-                <td>
-                        <a href="{{ url_for('editar_consulta', id_consulta = x.id_consulta)}}">Reagendar</a>
-                        <a href="{{ url_for('excluir_consulta', id_consulta = x.id_consulta)}}">Desmarcar</a>
-                     </td>
-            </tr>
+            <div class="div_consultaInfo">
+
+                <div class="especialidade_consulta">
+                    <label class="especialidade_txt"> Especialidade: {{x.especialidade}}</label>
+                </div>
+                <div class="info_consulta">
+                    <label class="info_txt"> 
+                        <i class="bi bi-clipboard-heart"></i>
+                        <p>Médico: {{x.medico_responsavel}}</p>
+                    </label>
+
+                    <label class="info_txt"> 
+                        <i class="bi bi-calendar2-week"></i>
+                        <p>Data e Horário: {{x.data_consulta}} | {{x.hora_consulta}}</p>
+                    </label>
+                </div>
+                <div class="edit_consulta">
+
+                        <a href="{{ url_for('editar_consulta', id_consulta = x.id_consulta)}}" class="reagendar_a">Reagendar</a>
+                        <a href="{{ url_for('excluir_consulta', id_consulta = x.id_consulta)}}" class="desmarcar_a">Desmarcar</a>
+                </div>
+            </div>
             {%  endfor %}
-
-        </thead>
-
-    </table>
+        </div>    
 
     <br>
-    <a href="/">Voltar</a>
 </body>
 </html>
