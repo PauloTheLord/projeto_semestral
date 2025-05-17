@@ -29,7 +29,7 @@ lm = LoginManager(app)
 lm.login_view = '/login'
 
 app.config['SQLALCHEMY_DATABASE_URI']  = \
-    'mysql+pymysql://root:we123@localhost:3306/projeto_semestral'
+    'mysql+pymysql://root:Lucas_62@localhost:3306/projeto_semestral'
 
 #a linha abaixo instancia o banco de dados
 db = SQLAlchemy(app)
