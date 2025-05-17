@@ -105,7 +105,7 @@ def home():
 
 @app.route("/carteirinha")
 def card_user():
-    return render_template("./carteirinha.html")
+    return render_template("./carteirinha.html", nome = current_user.nome, cpf =  current_user.cpf)
 @app.route('/logout')
 @login_required
 def logout():
@@ -157,7 +157,7 @@ def add_banco():
             db.session.commit()
             return redirect('/login')
     
-#rota paar confirmação de email e cpf    
+#rota para confirmação de email e cpf    
 @app.route("/confirm_email", methods = ['POST'])
 def email_confirm():
 
@@ -255,7 +255,7 @@ def logar():
             user = db.session.query(Cadastro_adm).filter_by(matricula = cpf_input, senha = senha_input).first()
 
         if not user:
-             return "CPF ou senha incorretos."
+            return "CPF ou senha incorretos."
         else:
             
             #realiza o login do usuário
@@ -278,8 +278,8 @@ def agendar_banco():
     especialidade = request.form['especialidade']
     medico = request.form['medico']
     nova_consulta = Consultas(cpf_paciente = cpf_paciente, data_consulta=data_consulta, 
-                              hora_consulta=hora_consulta, especialidade=especialidade, 
-                              medico_responsavel=medico )
+                            hora_consulta=hora_consulta, especialidade=especialidade, 
+                            medico_responsavel=medico )
     db.session.add(nova_consulta)
 
             #a linha abaixo grava as alterações no banco de dados
