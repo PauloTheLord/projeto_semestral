@@ -3,11 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'style/agendar_consultas.css')}}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_back" />
     <title>Agendamento de Consulta</title>
 </head>
 <body>
 
+    <nav class="nav_bar">
+        <div class="back_btn">
+            <a href="/" class="material-symbols-outlined">
+                arrow_back
+            </a>
+        </div>
+        <div class="div_txt">
+            <h1 class="nav_txt">Agendar Consulta</h1>
+        </div>
+        <div></div>
+        
+    </nav>
     <form action="/agendar_banco" method="post">
+
+        <div class="agendamento_local">
+        <div class="agendamento_card">
         <label for="especialidade">Especialidade</label>
         <select name="especialidade" id="especialidade" required>
             <option value="">-- Selecione --</option>
@@ -18,7 +35,6 @@
             <option value="Oftalmologia">Oftalmologia</option>            
         </select>
         <br><br>
-
         <label for="medico">Médico</label>
         <select name="medico" id="medico" required>
             <option value="">-- Selecione uma especialidade --</option>
@@ -40,10 +56,11 @@
         <br><br>
 
         <button type="submit">Agendar</button>
+    </div>
+    </div>
     </form>
 
     <br>
-    <a href="/">Voltar</a>
 
 
 

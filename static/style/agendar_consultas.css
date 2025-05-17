@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --primary-color: #3473E9;
+    --secondary-color: #58B3FF;
+    --substitute-color: #5DDFFF;
+    --highlight-color: #5728A8;
+    --back-ground: #FEFCF9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+body {
+    background-color: var(--back-ground);
+    height: 100vh;
+    margin: 0;
+}
+
+label {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--highlight-color);
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid var(--highlight-color);
+    border-radius: 10px;
+    background-color: transparent;
+    color: var(--highlight-color);
+    font-size: 16px;
+    text-align: center;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: var(--substitute-color);
+}
+
+.nav_bar{
+    background-color: #3473E9;
+    width: 100%;
+    height: 7vh;
+    border-radius: 0 0 20px 20px;
+    display: flex;
+    flex-direction: row;
+    
+    
+}
+.nav_bar .back_btn{  
+    display: flex;
+    align-items: center; 
+}
+.nav_bar .back_btn a{  
+    color: var(--highlight-color);
+    font-size: 3vw;
+    text-decoration: none;
+}
+.nav_bar .div_txt{
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.5vw;
+    
+}
+.nav_bar .div_txt .nav_txt{
+    color: var(--highlight-color);
+    font-weight: bold;
+}
+
+.agendamento_local{
+    display: flex;
+    height: 80vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.agendamento_card{
+    background-color: white;
+    border-radius: 15px;
+    width: 400px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.back-button {
+    cursor: pointer;
+}
+
+.back-button img {
+    width: 24px;
+    height: 24px;
+}
+
