@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form action="/gravar_paciente" method="post">
+         <input value="{{paciente_selecionado.cpf}}" type="hidden" name ="txtCpf">
+
+            
+            <label for="cpf">CPF</label>
+            <input type="text"  name="txtNovocpf" pattern="\d{11}" maxlength="11" id="cpf" placeholder="insira o novo CPF"> <br><br>
+
+            <label for="nome">Nome</label>
+            <input type="text"  name="txtNome"  id="nome" placeholder="insira o novo nome"> <br><br>
+
+            <label for="tel">Telefone</label>
+            <input type="text" name="txtTelefone" id="tel"  pattern="\d{11}" maxlength="11" placeholder=" insira o novo telefone">  <br><br>
+
+
+             <label for="email">Email</label>
+            <input type="email"  name="txtEmail"  id="email" placeholder="digite o novo e-mail"><br><br>
+
+            <label >Data Nascimento</label>
+            <input type="date"  name="txtData"> <br><br>
+            
+            <label >Senha</label>
+            <input type="text"  name="txtSenha"> <br><br>
+
+            <label >CEP</label>
+            <input type="text"  name="txtCep"  pattern="\d{8}" maxlength="8"> <br><br>
+
+            <label>Rua</label>
+            <input type="text"  name="txtRua"> <br> <br>
+        
+
+            <label >Bairro</label>
+            <input type="text"  name="txtBairro"> <br>  <br>
+
+            <label >Cidade</label>
+            <input type="text"  name="txtCidade">  <br> <br>
+
+            <label >UF</label>
+            <input type="text"  name="txtUf"> <br> <br>
+
+
+
+            <button type="submit">Atualizar Cadastro </button>
+
+    </form>
+
+     <a href="/lista_pacientes"> Voltar </a>
+</body>
+</html>

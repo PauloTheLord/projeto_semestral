@@ -29,7 +29,7 @@ lm = LoginManager(app)
 lm.login_view = '/login'
 
 app.config['SQLALCHEMY_DATABASE_URI']  = \
-    'mysql+pymysql://root:Lucas_62@localhost:3306/projeto_semestral'
+    'mysql+pymysql://root:we123@localhost:3306/projeto_semestral'
 
 #a linha abaixo instancia o banco de dados
 db = SQLAlchemy(app)
@@ -295,9 +295,13 @@ def agendar_banco():
 @app.route ('/lista_agendamento')
 @login_required
 def meus_agendamentos():
+
     cpf_logado = current_user.get_id()
     agendamentos = Consultas.query.filter_by(cpf_paciente=cpf_logado).order_by(Consultas.data_consulta).all()
-    return render_template('./meus_agendamentos.html', agendamentos = agendamentos)
+
+    lista_adm = Consultas.query.order_by(Consultas.cpf_paciente).all()
+
+    return render_template('./meus_agendamentos.html',tipo=current_user.tipo_de_usuario,  agendamentos = agendamentos, lista_adm = lista_adm)
 
 @app.route('/editar_consulta/<int:id_consulta>')
 @login_required
@@ -329,5 +333,47 @@ def excluir_consulta(id_consulta):
     db.session.commit()
     return redirect('/lista_agendamento')
 
+@app.route ('/lista_pacientes')
+@login_required
+def lista_pacientes():
+   lista_p = Cadastro_paciente.query.filter_by(tipo_de_usuario='paciente').order_by(Cadastro_paciente.nome).all()
+   return render_template('./lista_pacientes.html', lista_p = lista_p, tipo=current_user.tipo_de_usuario)
+
+@app.route('/editar_paciente/<string:cpf>')
+@login_required
+def editar_paciente(cpf):
+    paciente_selecionado = Cadastro_paciente.query.filter_by(cpf=cpf).first()
+
+    return render_template('./editar_paciente.html', paciente_selecionado = paciente_selecionado)
+
+
+@app.route('/gravar_paciente', methods = ['POST'])
+@login_required
+def gravar_paciente():
+    gravado = Cadastro_paciente.query.filter_by(cpf=request.form['txtCpf']).first()
+    gravado.nome = request.form['txtNome']
+    gravado.data_nasc = request.form['txtData']
+    gravado.email = request.form['txtEmail']
+    gravado.senha = request.form['txtSenha']
+    gravado.telefone = request.form['txtTelefone']
+    gravado.cep = request.form['txtCep']
+    gravado.rua = request.form['txtRua']
+    gravado.bairro = request.form['txtBairro']
+    gravado.cidade = request.form['txtCidade']
+    gravado.UF = request.form['txtUf']
+    gravado.cpf = request.form['txtNovocpf']
+
+    db.session.add(gravado)
+    db.session.commit()
+    return redirect('/lista_pacientes')
+
+
+@app.route('/excluir_paciente/<string:cpf>')
+def excluir_paciente (cpf):
+   
+   Cadastro_paciente.query.filter_by(cpf=cpf).delete()
+   db.session.commit()
+   
+   return redirect('/lista_pacientes')
 
 app.run(debug=True)

@@ -10,6 +10,18 @@
 
     {% if tipo == 'usuario_adm' %}
     <h1>Olá {{ nome }}, sua matricula é {{ matricula }}</h1>
+        <br> <br>
+         
+    <a href="/lista_pacientes"> Editar Pacientes </a>    
+    
+    <br>
+    <a href="/lista_agendamento"> Editar Consultas </a>
+    <br>
+
+    <a href="/cadastrar"> Cadastrar Novo Paciente </a> <br>
+
+
+
 {% else %}
 
     <h1>Olá {{nome}}, seu email é {{email}}</h1>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style type="text/css">
+        table,tr,th,td{
+            border: 1px solid #A62B1F;
+
+        }
+    </style>
+</head>
+<body>
+     {% if tipo == 'usuario_adm' %}
+        
+
+     
+   <table>
+            <thead>  
+
+                <tr>
+                   <th> CPF </th> <th>Nome </th> <th>data nascimento</th> <th>e-mail</th> <th>senha</th> <th>telefone</th> 
+                   <th>CEP</th>  <th>Rua</th> <th>Bairro</th> <th>Cidade</th> <th>UF</th>
+                </tr>
+
+                 {% for x in lista_p %}  
+                <tr>
+                    <td>{{x.cpf}}</td> 
+                     <td>{{x.nome}}</td> 
+                     <td> {{x.data_nasc}} </td> 
+                     <td>{{x.email}}</td> 
+                     <td>{{x.senha}}</td> 
+                     <td>{{x.telefone}}</td> 
+                     <td>{{x.cep}}</td> 
+                     <td>{{x.rua}}</td> 
+                     <td>{{x.bairro}}</td> 
+                     <td>{{x.cidade}}</td> 
+                     <td>{{x.UF}}</td> 
+                     <td>
+                        <a href="{{ url_for('editar_paciente', cpf = x.cpf)}}">editar</a>
+                        <a href="{{ url_for('excluir_paciente', cpf = x.cpf)}}">excluir</a>
+                     </td>
+                </tr>
+                {%  endfor %}
+
+            </thead>
+        </table>
+            <br>
+            <a href="/">home</a>
+            <br> <br>
+            <a href="/logout">logout</a>
+
+
+
+
+     {% else %}
+
+     pagina não disponível.
+
+     {% endif %}
+</body>
+</html>
