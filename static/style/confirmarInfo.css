@@ -14,8 +14,9 @@
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
 }
+
 #erro_div{
-    background-color: aliceblue;
+    background-color: var(--back-ground);
     text-align: center;
     padding: 5px;
     height: 200px;
@@ -23,7 +24,28 @@
     position: absolute;
     left: 80vh;
     top: 30vh;
+    border: 5px solid var(--highlight-color);
     border-radius: 20px;
+    color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+
+}
+#erro_div hr{
+    border: 1px solid var(--highlight-color);
+    margin-bottom: 10%;
+}
+
+#erro_div button{
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .container{

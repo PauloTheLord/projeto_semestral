@@ -20,31 +20,39 @@
             
         </nav>
         <div class="local_consultaInfo">
-            {% for x in agendamentos %}  
-            <div class="div_consultaInfo">
+            {%if agendamentos%}
+                {% for x in agendamentos %}  
+                <div class="div_consultaInfo">
 
-                <div class="especialidade_consulta">
-                    <label class="especialidade_txt"> Especialidade: {{x.especialidade}}</label>
-                </div>
-                <div class="info_consulta">
-                    <label class="info_txt"> 
-                        <i class="bi bi-clipboard-heart"></i>
-                        <p>Médico: {{x.medico_responsavel}}</p>
-                    </label>
+                    <div class="especialidade_consulta">
+                        <label class="especialidade_txt"> Especialidade: {{x.especialidade}}</label>
+                    </div>
+                    <div class="info_consulta">
+                        <label class="info_txt"> 
+                            <i class="bi bi-clipboard-heart"></i>
+                            <p>Médico: {{x.medico_responsavel}}</p>
+                        </label>
 
-                    <label class="info_txt"> 
-                        <i class="bi bi-calendar2-week"></i>
-                        <p>Data e Horário: {{x.data_consulta}} | {{x.hora_consulta}}</p>
-                    </label>
-                </div>
-                <div class="edit_consulta">
+                        <label class="info_txt"> 
+                            <i class="bi bi-calendar2-week"></i>
+                            <p>Data e Horário: {{x.data_consulta}} | {{x.hora_consulta}}</p>
+                        </label>
+                    </div>
+                    <div class="edit_consulta">
 
-                        <a href="{{ url_for('editar_consulta', id_consulta = x.id_consulta)}}" class="reagendar_a">Reagendar</a>
-                        <a href="{{ url_for('excluir_consulta', id_consulta = x.id_consulta)}}" class="desmarcar_a">Desmarcar</a>
+                            <a href="{{ url_for('editar_consulta', id_consulta = x.id_consulta)}}" class="reagendar_a">Reagendar</a>
+                            <a href="{{ url_for('excluir_consulta', id_consulta = x.id_consulta)}}" class="desmarcar_a">Desmarcar</a>
+                    </div>
                 </div>
-            </div>
-            {%  endfor %}
+                {%  endfor %}
+
+            {%else%}
+                <div class="sem_agendamento">
+                    <i class="bi bi-calendar2-week"></i>
+                <p>Você não tem nem um agendamento</p>
         </div>    
+            {%endif%}
+        </div>  
 
     <br>
 </body>

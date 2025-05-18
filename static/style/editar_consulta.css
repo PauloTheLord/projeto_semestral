@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-    --primary-color: #3473E9 ;
+    --primary-color: #3473E9;
     --secondary-color: #58B3FF;
     --substitute-color: #5DDFFF;
     --highlight-color: #5728A8;
-    --back-ground:#FEFCF9;
+    --back-ground: #FEFCF9;
 }
 
 * {
@@ -39,40 +39,61 @@
     position: relative;
     transform: translate(-50%, -50%);
     left: 47%;
-    top: 50%;  
+    top: 50%;   
 }
 .nav_bar .div_txt .nav_txt{
     color: var(--highlight-color);
     font-weight: bold;
 }
-#card_local{
-    height: 93vh;
+
+.reagendar_local{
     display: flex;
+    height: 80vh;
     justify-content: center;
     align-items: center;
+}
 
-}
-#card{
-    background-image: linear-gradient(var(--substitute-color) ,var(--secondary-color) ,var(--highlight-color));
-    border: 4px solid var(--highlight-color);
-    border-radius: 20px;
+.reagendar_card{
+    background-color: white;
+    border-radius: 15px;
+    width: 400px;
     padding: 20px;
-    width: 70%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
-.group-titulo-logo{
-    display: flex;
-    align-items: center;
+
+label {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--highlight-color);
+    display: block;
+    margin-bottom: 5px;
 }
-.img-logo{
-    height: 6vh;
-    margin-bottom: 20%;
-    background-color: var(--primary-color);
-    padding: 8px;
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid var(--highlight-color);
     border-radius: 10px;
+    background-color: transparent;
+    color: var(--highlight-color);
+    font-size: 16px;
+    text-align: center;
 }
-#card p{
-    font-size: 2vw;
-    margin-bottom: 2%;
-    color: var(--back-ground);
-    font-weight: bold;
+
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
+
+button:hover {
+    background-color: var(--substitute-color);
+}
+

@@ -6,11 +6,20 @@
     <link rel="stylesheet" href="{{ url_for('static', filename = 'style/login.css')}}">
     <title>Login</title>
 </head>
-<body>
-    
+<body>  
+
+
 <form method="post"> 
     <div class="container"></div>
-        <div id="login_local">
+        {% if alert_value %}
+            <div id="erro_div">
+                <h3>Erro</h3>
+                <hr>
+                <p>{{txt_alert}}</p>
+                <a id="btn_dispose">Ok</a>        
+            </div>
+        {%endif%}
+    <div id="login_local">
             <div class="group-titulo-logo">
                 <img src="/static/assets/img/logo-bg-removed.png" alt="" class="img-logo">
             </div>
@@ -30,10 +39,6 @@
     </div>
 </form>
 
-<nav>
-
-
-</nav>
-
+    <script src="{{ url_for('static', filename = 'script/login.js')}}"></script>
 </body>
 </html>

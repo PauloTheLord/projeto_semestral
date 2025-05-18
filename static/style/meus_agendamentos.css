@@ -37,7 +37,7 @@
     font-size: 1.5vw;
     position: relative;
     transform: translate(-50%, -50%);
-    left: 50%;
+    left: 47%;
     top: 50%;   
 }
 .nav_bar .div_txt .nav_txt{
@@ -45,9 +45,6 @@
     font-weight: bold;
 }
 
-table,tr,th,td{
-    border: 1px solid #A62B1F;
-}
 .local_consultaInfo{
     display: flex;
     flex-direction: row;
@@ -99,5 +96,27 @@ table,tr,th,td{
     border-radius: 5px;
     color: var(--back-ground);
     padding: 1px;
+}
+
+.sem_agendamento{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.sem_agendamento i{
+    color: var(--secondary-color);
+    font-size: 10vw;
+
+}
+
+.sem_agendamento p{
+    color: var(--secondary-color);
+    font-size: 2.7vw;
 }
 

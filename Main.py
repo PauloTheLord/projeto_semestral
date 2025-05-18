@@ -252,12 +252,17 @@ def logar():
         senha_input = request.form['senha']
         user = db.session.query(Cadastro_paciente).filter_by(cpf = cpf_input, senha = senha_input).first()
         if not user:
+            alert = False
+            alert_txt = '' 
             user = db.session.query(Cadastro_adm).filter_by(matricula = cpf_input, senha = senha_input).first()
 
         if not user:
-            return "CPF ou senha incorretos."
+            alert = True
+            alert_txt = 'Usuário não encontrado' 
+            return render_template("./login.html",alert_value = alert, txt_alert = alert_txt )
         else:
-            
+            alert = False
+            alert_txt = '' 
             #realiza o login do usuário
             login_user(user)
             #redireciona para home depois do login
