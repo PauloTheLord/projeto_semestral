@@ -142,7 +142,6 @@
 #btn_cadastrar:hover {
     background-color: var(--primary-color);
     color: var(--back-ground);
-    border-color: var(--primary-color);
 }
 
 #consulta_img {

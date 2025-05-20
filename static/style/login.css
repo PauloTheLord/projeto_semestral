@@ -133,7 +133,6 @@
 
 .btn_enter:hover {
     background-color: var(--primary-color);
-    border: 2px solid var(--back-ground);
     color: var(--back-ground);
 }
 
