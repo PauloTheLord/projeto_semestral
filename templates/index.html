@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,8 +11,8 @@
         <img class="logo" src="/static/assets/img/logo2-bg-removed.png" alt="logo">
         <nav>
             <ul>
-                <li><a class="link-nav" href="{{ url_for('/templates/login.html') }}">Login</a></li>
-                <li><a class="link-nav" href="">Cadastrar-se</a></li>
+                <li><a class="link-nav" href="/login">Login</a></li>
+                <li><a class="link-nav" href="/cadastrar">Cadastrar-se</a></li>
             </ul>
         </nav>
     </header>
@@ -20,7 +20,7 @@
     <div class="container">
         <div class="part1">
             <p class="texto-principal">Sua saúde em primeiro lugar com <span class="destaque">data e hora</span> marcada.</p>
-            <a class="link-comecar" href="">Começar</a>
+            <a class="link-comecar" href="/login">Começar</a>
         </div>
         <div class="part2">
             <img class="img-principal" src="/static/assets/img/img-principal_index.png" alt="img-principal">
