@@ -5,6 +5,7 @@
     --secondary-color: #58B3FF;
     --substitute-color: #5DDFFF;
     --highlight-color: #5728A8;
+    --neutral-color: #315aa7;
     --back-ground:#FEFCF9;
 }
 
@@ -16,6 +17,7 @@
 }
 
 .container{
+    background-color: var(--neutral-color);
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -25,6 +27,7 @@
 
 .img-logo{
     height: 5vh;
+    margin-bottom: 24px;
 }
 #cadastro_local{
     display: flex;
@@ -76,17 +79,16 @@
 }
 
 .part-1 .card-cadastro {
+    background-color: var(--back-ground);
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     border-radius: 25px;
-    box-shadow: 4px 8px 20px 0px;
+    box-shadow: 7px 7px 0px rgba(0, 0, 0, 0.3);
     padding: 20px 20px;
+    height: 67vh;
     width: 550px;
-}
-
-.part-1 .card-cadastro .group-titulo-logo {
-    display: flex;
 }
 
 .part-1 .card-cadastro .group-titulo-logo .titulo-cadastro {
@@ -111,7 +113,7 @@
 
 .part-1 .card-cadastro form .step .textbox {
     width: 300px;
-    padding: 5px 10px;
+    padding: 6px 10px;
     border: 2px solid var(--secondary-color);
     border-radius: 15px;
 }
@@ -119,6 +121,7 @@
 .part-1 .card-cadastro form .textbox:focus {
     outline: none;
 }
+
 .btn_step{
     background-color: var(--primary-color);
     color: var(--back-ground);
@@ -129,3 +132,20 @@
     font-weight: bold;    
 }
 
+#btn_cadastrar {
+    background-color: var(--back-ground);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    transition: 0.3s;
+}
+
+#btn_cadastrar:hover {
+    background-color: var(--primary-color);
+    color: var(--back-ground);
+    border-color: var(--primary-color);
+}
+
+#consulta_img {
+    border-left: 4px solid var(--back-ground);
+    box-shadow: -8px 0px 5px rgba(0, 0, 0, 0.3);
+}
