@@ -25,11 +25,8 @@ app.secret_key="MedDay"
 #Variável que permite o acesso ao flask_login atravéz da variável de aplicação utilizada como parâmetro 
 lm = LoginManager(app)
 
-#faz com que caso o usuário não esteja logado seja direcionado autoamticamente para login
-lm.login_view = '/login'
-
 app.config['SQLALCHEMY_DATABASE_URI']  = \
-    'mysql+pymysql://root:we123@localhost:3306/projeto_semestral'
+    'mysql+pymysql://root:Paulo!0102@localhost:3306/projeto_semestral'
 
 #a linha abaixo instancia o banco de dados
 db = SQLAlchemy(app)
@@ -98,6 +95,10 @@ def resetar_senha():
     return  render_template("./resetarsenha.html")
 
 @app.route("/")
+def index_loader():
+    return render_template("./index.html")
+
+@app.route("/home")
 #faz com que essa rota só possa ser acessada se estiver logado
 @login_required
 def home():
@@ -111,7 +112,7 @@ def card_user():
 def logout():
     #realiza o logout do usuário
     logout_user()
-    return redirect(url_for('home'))
+    return redirect('/')
 
 @app.route("/add", methods = ['POST'])
 def add_banco():
