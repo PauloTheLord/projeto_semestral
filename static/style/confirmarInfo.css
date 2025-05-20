@@ -5,6 +5,7 @@
     --secondary-color: #58B3FF;
     --substitute-color: #5DDFFF;
     --highlight-color: #5728A8;
+    --neutral-color: #315aa7;
     --back-ground:#FEFCF9;
 }
 
@@ -49,6 +50,7 @@
 }
 
 .container{
+    background-color: var(--neutral-color);
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -56,6 +58,7 @@
     padding: 0;
     overflow: hidden;
 }
+
 #info_local{
     display: flex;
     justify-content: center;
@@ -63,17 +66,29 @@
     height: 100vh;
     width: 100%;
 }
+
 .card-info{
+    background-color: var(--back-ground);
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     border-radius: 25px;
-    box-shadow: 4px 8px 20px 0px;
+    box-shadow: 7px 7px 0px rgba(0, 0, 0, 0.3);
     padding: 20px 20px;
     width: 550px;
+    height: 42vh;
 }
+
 .img-logo{
     height: 5vh;
+    margin-bottom: 24px;
+}
+
+.group-label-input .label-nome {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
 }
 
 .group-label-input {
@@ -81,27 +96,45 @@
     flex-direction: column;
     margin-bottom: 20px;
 }
+
 .group-label-input .textbox {
     width: 300px;
-    padding: 5px 10px;
+    padding: 9px 10px;
     border: 2px solid var(--secondary-color);
     border-radius: 15px;
+    font-size: 16px;
+}
+
+.group-label-input .textbox:focus {
+    outline: none;
 }
 
 .btn_confirm{
-    background-color: var(--primary-color);
-    color: var(--back-ground);
-    border: var(--back-ground);
+    background-color: var(--back-ground);
+    color: var(--primary-color);
+    font-size: 20px;
+    border: 2px solid var(--primary-color);
     border-radius: 10px;
     padding: 10px;
-    margin: 5px;
-    font-weight: bold;    
+    margin-top: 10px;
+    font-weight: bold;   
+    cursor: pointer; 
+    transition: 0.3s;
 }
+
+.btn_confirm:hover {
+    background-color: var(--primary-color);
+    color: var(--back-ground);
+}
+
 #image_local{
     height: 100vh;
     width: 100vh;
 }
+
 #consulta_img{
     height: 100%;
     height: 100%;
+    border-right: 4px solid var(--back-ground);
+    box-shadow: 8px 0px 5px rgba(0, 0, 0, 0.3);
 }
