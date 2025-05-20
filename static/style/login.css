@@ -5,6 +5,7 @@
     --secondary-color: #58B3FF;
     --substitute-color: #5DDFFF;
     --highlight-color: #5728A8;
+    --neutral-color: #315aa7;
     --back-ground:#FEFCF9;
 }
 
@@ -29,8 +30,8 @@
     color: var(--primary-color);
     display: flex;
     flex-direction: column;
-
 }
+
 #erro_div hr{
     border: 1px solid var(--highlight-color);
     margin-bottom: 10%;
@@ -49,8 +50,7 @@
 }
 
 .container{
-    background-image: url(/static/assets/img/login_img.jpeg);
-    filter: blur(5px);
+    background-color: var(--neutral-color);
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -59,15 +59,18 @@
     padding: 0;
     position: relative;
 }
+
 .group-titulo-logo{
     transform: translate(-50%, -50%);
     position: absolute;
     left: 50%;
     top: 12%;
 }
+
 .img-logo{
     height: 5vh;
 }
+
 #login_local{
     background-color: var(--back-ground);
     display: flex;
@@ -76,34 +79,64 @@
     padding: 5px;
     margin: 5px;
     padding: 30px;
-    width: 90vh;
-    height: 50vh;
-    border-radius: 5px;
-    box-shadow: 4px 8px 20px 0px;
+    width: 70vh;
+    height: 60vh;
+    border-radius: 20px;
+    box-shadow: 7px 7px 0px rgba(0, 0, 0, 0.3);
     position:absolute;
     transform: translate(-50%, -50%);
     left: 50%;
     top: 50%;
 }
-.group-label-input{
+
+.group-label-input {
     display: flex;
     flex-direction: column;
     margin: 20px;
 }
 
+.group-label-input .label-nome {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
 .group-label-input .textbox {
-    padding: 5px 10px;
+    padding: 9px 10px;
     border: 2px solid var(--secondary-color);
     border-radius: 15px;
+    font-size: 16px;
 }
 
-.btn_enter{
-    background-color: var(--primary-color);
-    color: var(--back-ground);
-    border: var(--back-ground);
+.group-label-input .textbox:focus {
+    outline: none;
+}
+
+.forget-passwd-link {
+    margin-top: 7px;
+    margin-left: 4px;
+    font-size: 15px;
+}
+
+.btn_enter {
+    background-color: var(--back-ground);
+    color: var(--primary-color);
+    font-size: 20px;
+    border: 2px solid var(--primary-color);
     border-radius: 10px;
     padding: 10px;
-    margin: 5px;
-    font-weight: bold;    
+    margin-bottom: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
+.btn_enter:hover {
+    background-color: var(--primary-color);
+    border: 2px solid var(--back-ground);
+    color: var(--back-ground);
+}
+
+.link-cadastrar {
+    text-align: center;
+}

@@ -24,20 +24,20 @@
                 <img src="/static/assets/img/logo2-bg-removed.png" alt="" class="img-logo">
             </div>
             <div class="group-label-input">
-                <label for="cpf"> CPF </label>
-                <input id="cpf" type="text"  pattern="\d{11}" maxlength="11"  name="cpf" placeholder="Digite seu cpf" class="textbox">
+                <label class="label-nome" for="cpf">CPF</label>
+                <input id="cpf" type="text"  pattern="\d{11}" maxlength="11"  name="cpf" placeholder="Digite seu CPF (apenas números)" class="textbox">
             </div>
             <div class="group-label-input">
-                <label for="senha">Senha</label>
+                <label class="label-nome" for="senha">Senha</label>
                 <input id="senha" name="senha" type="password" class="textbox" placeholder="Digite sua Senha">
-                    <a href="/info_confirm"> Esqueci minha senha  </a>
+                    <a class="forget-passwd-link" href="/info_confirm">Esqueci minha senha</a>
             </div>
             <div class="group-label-input">
                 <button type="submit" class="btn_enter">Entrar</button>
-                    <a href="/cadastrar">Ainda não tem uma conta? Cadastre-se</a>
+                <a class="link-cadastrar" href="/cadastrar">Ainda não tem uma conta? Cadastre-se</a>
+            </div>
         </div>
-    </div>
-</form>
+    </form>
 
     <script src="{{ url_for('static', filename = 'script/login.js')}}"></script>
 </body>
