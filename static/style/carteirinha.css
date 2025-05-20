@@ -45,6 +45,7 @@
     color: var(--highlight-color);
     font-weight: bold;
 }
+
 #card_local{
     height: 93vh;
     display: flex;
@@ -52,6 +53,7 @@
     align-items: center;
 
 }
+
 #card{
     background-image: linear-gradient(var(--substitute-color) ,var(--secondary-color) ,var(--highlight-color));
     border: 4px solid var(--highlight-color);
@@ -59,17 +61,20 @@
     padding: 20px;
     width: 70%;
 }
+
 .group-titulo-logo{
     display: flex;
     align-items: center;
 }
+
 .img-logo{
     height: 6vh;
     margin-bottom: 20%;
-    background-color: var(--primary-color);
+    background-color: var(--back-ground);
     padding: 8px;
     border-radius: 10px;
 }
+
 #card p{
     font-size: 2vw;
     margin-bottom: 2%;
