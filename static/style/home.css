@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --primary-color: #3473E9 ;
+    --secondary-color: #58B3FF;
+    --substitute-color: #5DDFFF;
+    --highlight-color: #5728A8;
+    --neutral-color: #315aa7;
+    --back-ground:#FEFCF9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+.nav_bar{
+    background-color: #3473E9;
+    width: 100%;
+    height: 7vh;
+    border-radius: 0 0 20px 20px;
+    display: flex;
+    flex-direction: row;
+    
+    
+}
+.nav_bar .back_btn{  
+    display: flex;
+    align-items: center; 
+}
+.nav_bar .back_btn a{  
+    color: var(--highlight-color);
+    font-size: 3vw;
+    text-decoration: none;
+}
+.nav_bar .div_txt{
+    font-size: 1.5vw;
+    position: relative;
+    transform: translate(-50%, -50%);
+    left: 47%;
+    top: 50%;  
+}
+.nav_bar .div_txt .nav_txt{
+    color: var(--highlight-color);
+    font-weight: bold;
+}
+.cards_local{
+    margin: 10px;
+    height: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.card{
+    background-color: var(--primary-color);
+    width: 30%;
+    margin: 0.5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0.5%;
+    border-radius: 10%;
+    text-decoration: none;
+}
+.card .icon_local {
+    background-color: var(--substitute-color);
+    border-radius: 60%;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+}
+
+.card .icon_local i{
+    font-size: 10vw;
+    margin: 5%;
+    color: var(--highlight-color);
+}
+
+.card p{
+    font-size: 3vw;
+    color: var(--substitute-color);
+    margin: 5%;
+}
+.swiper_local{
+    margin: 1%;
+}
+.swiper {
+    width: 60%;
+    height: 65vh;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5%;
+}
+.txt_noticia{
+    height: 100%;
+    background-size: cover;
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+
+}
+
+.txt_noticia p{
+    margin: 2%;
+    margin-bottom: 10%;
+    font-size: 1.5vw;
+    color: var(--highlight-color);
+    background-color: var(--secondary-color);
+    border-radius: 10%;
+}
+.img1{
+    background-image: url(/static/assets/img/noticia1.avif);
+
+}
+.img2{
+    background-image: url(/static/assets/img/noticia2.avif);
+}
+.img3{
+    background-image: url(/static/assets/img/noticia3.webp);
+}
