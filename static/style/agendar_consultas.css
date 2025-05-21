@@ -106,9 +106,15 @@ input, select {
     color: #000f2c;
     font-size: 16px;
     text-align: center;
+    -moz-appearance: none;
+    -webkit-appearance: none;
 }
 
-input, select:focus {
+select {
+    background: url("/static/assets/img/chevron-down.svg") no-repeat right 10px center;
+}
+
+select:focus, input:focus {
     outline: none;
 }
 
