@@ -24,6 +24,12 @@
     </nav>
 
     <div class="container1">
+        <div class="busca"><!--div da área de pesquisa-->
+            <input type="text" placeholder="Buscar" name="Pesquisa" id="pesquisar"><!--caixa de texto-->
+        </div>
+        
+        <p style="color: black;" id="no-found"></p>
+
         <table id="consultas-geral">
             <thead class="grade">
                 <tr class="cabecalho">
@@ -36,7 +42,7 @@
                 </tr>
 
                 {% for x in lista_adm %}
-                <tr>
+                <tr class="consulta-individual">
                     <td>{{x.id_consulta}}</td>
                     <td>{{x.cpf_paciente}}</td>
                     <td> {{x.data_consulta}}</td>
@@ -101,7 +107,8 @@
         {%endif%}
     </div>
     {% endif %}
-    <br>
+
+    <script src="/static/script/pesquisar_meus_agendamentos.js"></script>
 </body>
 
 </html>
