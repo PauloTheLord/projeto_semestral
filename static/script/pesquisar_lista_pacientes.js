@@ -30,7 +30,6 @@ input_pesquisar.addEventListener('keyup', () =>
         }
         else {
             paciente_individual[posicao].style.display = 'none';
-            pacientes_geral.style.display = 'none';
         }
 
         for (var i = 0; i < paciente_individual.length; i++) {
@@ -41,7 +40,8 @@ input_pesquisar.addEventListener('keyup', () =>
         }
 
         if (semPacientes) {
-            no_found.textContent = "Paciente não encontrado...";
+            no_found.textContent = "Pacientes não encontrado...";
+            pacientes_geral.style.display = 'none';
         }
     }
 });
