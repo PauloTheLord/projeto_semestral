@@ -16,37 +16,45 @@
     font-family: "Montserrat", sans-serif;
 }
 
-#erro_div{
+#erro_div {
     background-color: var(--back-ground);
     text-align: center;
-    padding: 5px;
+    padding: 15px;
     height: 200px;
     width: 400px;
     position: absolute;
-    left: 80vh;
-    top: 30vh;
-    border: 5px solid var(--highlight-color);
+    left: 1vw;
+    top: 1vh;
+    border: 1px solid #292929;
     border-radius: 20px;
     color: var(--primary-color);
     display: flex;
     flex-direction: column;
-
-}
-#erro_div hr{
-    border: 1px solid var(--highlight-color);
-    margin-bottom: 10%;
 }
 
-#erro_div button{
+#erro_div h3 {
+    font-size: 20px;
+    margin-bottom: 25px;
+    padding-bottom: 7px;
+    border-bottom: 2px solid #292929;
+}
+
+#erro_div p {
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #f81d1d;
+}
+
+#erro_div a{
     width: 100%;
     padding: 12px;
     font-size: 16px;
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     color: white;
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 .container {
