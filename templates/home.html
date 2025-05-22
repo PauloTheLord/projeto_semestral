@@ -1,44 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename = 'style/cadastrar.css')}}">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Home</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename = 'style/home.css')}}"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+        />
+        <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+        />
+    </head>
+    <body>
+        <nav class="nav_bar">
 
-    {% if tipo == 'usuario_adm' %}
-    <h1>Olá {{ nome }}, sua matricula é {{ matricula }}</h1>
-        <br> <br>
-         
-    <a href="/lista_pacientes"> Editar Pacientes </a>    
-    
-    <br>
-    <a href="/lista_agendamento"> Editar Consultas </a>
-    <br>
+            <div class="back_btn">
+                <a href="/"  class="bi bi-box-arrow-left"></a>
+            </div>
 
-    <a href="/cadastrar"> Cadastrar Novo Paciente </a> <br>
+            <div class="div_txt">
+                <h1 class="nav_txt">Home</h1>
+            </div>
+
+        </nav>
+
+        <div class="cards_local">
+            {% if tipo == 'usuario_adm' %}
+
+            <a  class="card" href="/lista_pacientes">    
+                <div class="icon_local">
+                    <i class="bi bi-person-fill-gear"></i>
+                </div>
+                <p>
+                    Editar Pacientes
+                </p>
+            </a>
+
+            <br />
+            <a class="card" href="/lista_agendamento">                               
+                <div class="icon_local">
+                    <i class="bi bi-clipboard2-pulse-fill"></i>
+                </div>
+                <p>
+                    Editar Consultas 
+                </p>
+            </a>
+            <br/>
+
+            <a class="card" href="/cadastrar">
+                
+                <div class="icon_local">
+                    <i class="bi bi-person-fill-add"></i>
+                </div>
+                <p>
+                    Cadastrar Novo Paciente
+                </p>
+                
+            </a> <br/>
+
+            {% else %}
+
+            <br/>
+            <a class="card" href="/agendar_consulta">
+                <div class="icon_local">
+                    <i class="bi bi-heart-pulse"></i>
+                </div>
+                <p>
+                    Agendar <br />
+                    Consulta
+                </p>
+            </a>
+
+            <a class="card" href="/lista_agendamento">
+                <div class="icon_local">
+                    <i class="bi bi-calendar2-week"></i>
+                </div>
+                <p>Meus agendamentos</p>
+            </a>
+
+            <a class="card" href="/carteirinha">
+                <div class="icon_local">
+                    <i class="bi bi-person-vcard"></i>
+                </div>
+                <p>Carteirinha</p>
+            </a>
+            {% endif %}
+        </div>
+
+        <div class="swiper_local">
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <a href="https://g1.globo.com/saude/noticia/2025/05/21/um-em-cada-4-adolescentes-vao-ter-obesidade-ou-sobrepeso-ate-2030-aponta-estudo.ghtml">
+                            <div class="txt_noticia img1">
+                                <p>Um em cada 4 adolescentes vai ter obesidade ou sobrepeso até 2030, aponta estudo</p>                      
+                            </div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="https://g1.globo.com/saude/noticia/2025/05/20/butantan-aval-anvisa-teste-vacina-da-gripe-aviaria-em-humanos.ghtml">
+                            <div class="txt_noticia img2">
+                                <p>Butantan aguarda há 9 meses aprovação da Anvisa para testar vacina de gripe aviária em humanos</p>                 
+                            </div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="https://g1.globo.com/noticia/2025/05/20/5-frutas-com-teor-surpreendente-de-proteina.ghtml">
+                            <div class="txt_noticia img3">
+                                <p>5 frutas com teor surpreendente de proteína</p>                           
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
 
 
-
-{% else %}
-
-    <h1>Olá {{nome}}, seu email é {{email}}</h1>
-
-    <br>
-
-    
-    <a href="/agendar_consulta"> Agendar consulta </a>    
-    
-
-    <br>
-    <a href="/carteirinha"> Carteirinha </a>
-    <br>
-    <a href="/lista_agendamento"> Meus agendamentos </a>
-    <br>
-    
-{% endif %}
-    <a href="/logout">Logout</a>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script src="{{ url_for('static', filename = 'script/home.js')}}"></script>
 </body>
 </html>
