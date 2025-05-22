@@ -65,13 +65,6 @@ body {
     background-color: var(--back-ground);
 }
 
-.agendamento_local {
-    display: flex;
-    height: 85vh;
-    justify-content: center;
-    align-items: center;
-}
-
 .container {
     display: flex;
     flex-direction: column;
