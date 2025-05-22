@@ -36,7 +36,7 @@ body {
     border-radius: 15px;
 }
 
-.nav_bar .back_btn{  
+.nav_bar .back_btn {  
     display: flex;
     align-items: center;
     width: 200px    ;
@@ -82,7 +82,7 @@ body {
     background-color: var(--back-ground);
     border-radius: 15px;
     width: 420px;
-    height: 62vh;
+    height: 69vh;
     padding: 20px;
     box-shadow: 7px 7px 0px rgba(0, 0, 0, 0.3);
     border: 2px solid var(--primary-color);
