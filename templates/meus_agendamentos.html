@@ -8,58 +8,52 @@
     <link rel="stylesheet" href="{{ url_for('static', filename = 'style/meus_agendamentos.css')}}">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-
-    <style type="text/css">
-        table,
-        tr,
-        th,
-        td {
-            border: 1px solid #A62B1F;
-
-        }
-    </style>
 </head>
 
 <body>
-
-
-
     {% if tipo == 'usuario_adm' %}
 
+    <nav class="nav_bar">
+        <div class="back_btn">
+            <a href="/home" class="bi bi-arrow-left"></a>
+        </div>
+        <div class="div_txt">
+            <h1 class="nav_txt">Editar Consultas</h1>
+        </div>
+        <img class="logo-img" src="/static/assets/img/logo2-bg-removed.png" alt="logo">
+    </nav>
 
-    <table>
-        <thead>
+    <div class="container1">
+        <table id="consultas-geral">
+            <thead class="grade">
+                <tr class="cabecalho">
+                    <th>ID</th>
+                    <th>CPD Paciente</th>
+                    <th>Data</th>
+                    <th>Hora</th>
+                    <th>Especialidade</th>
+                    <th>Médico</th>
+                </tr>
 
-            <tr>
-                <th> id </th>
-                <th>cpf paciente</th>
-                <th>data</th>
-                <th>hora</th>
-                <th>especialidade</th>
-                <th>médico</th>
-            </tr>
+                {% for x in lista_adm %}
+                <tr>
+                    <td>{{x.id_consulta}}</td>
+                    <td>{{x.cpf_paciente}}</td>
+                    <td> {{x.data_consulta}}</td>
+                    <td>{{x.hora_consulta}}</td>
+                    <td>{{x.especialidade}}</td>
+                    <td>{{x.medico_responsavel}}</td>
+                    <td class="last-td">
+                        <a href="{{ url_for('editar_consulta', id_consulta = x.id_consulta)}}" class="btn-editar">editar</a>
+                        <a href="{{ url_for('excluir_consulta', id_consulta = x.id_consulta)}}" class="btn-excluir">excluir</a>
+                    </td>
+                </tr>
+                {% endfor %}
 
-            {% for x in lista_adm %}
-            <tr>
-                <td>{{x.id_consulta}}</td>
-                <td>{{x.cpf_paciente}}</td>
-                <td> {{x.data_consulta}} </td>
-                <td>{{x.hora_consulta}}</td>
-                <td>{{x.especialidade}}</td>
-                <td>{{x.medico_responsavel}}</td>
-                <td>
-                    <a href="{{ url_for('editar_consulta', id_consulta = x.id_consulta)}}">editar</a>
-                    <a href="{{ url_for('excluir_consulta', id_consulta = x.id_consulta)}}">excluir</a>
-                </td>
-            </tr>
-            {% endfor %}
+            </thead>
+        </table>
+    </div>
 
-        </thead>
-    </table>
-    <br>
-    <a href="/">home</a>
-    <br> <br>
-    <a href="/logout">logout</a>
     {% else %}
     <nav class="nav_bar">
         <div class="back_btn">
@@ -91,7 +85,8 @@
             </div>
             <div class="edit_consulta">
                 <a href="{{ url_for('editar_consulta', id_consulta = x.id_consulta)}}" class="reagendar_a">Reagendar</a>
-                <a href="{{ url_for('excluir_consulta', id_consulta = x.id_consulta)}}" class="desmarcar_a">Desmarcar</a>
+                <a href="{{ url_for('excluir_consulta', id_consulta = x.id_consulta)}}"
+                    class="desmarcar_a">Desmarcar</a>
             </div>
         </div>
         {% endfor %}

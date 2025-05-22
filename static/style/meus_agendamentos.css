@@ -61,6 +61,87 @@
     background-color: var(--back-ground);
 }
 
+.container1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container1 .busca {
+    margin: 35px 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.container1 .busca #pesquisar {
+    border-radius: 23px;
+    padding: 13px 22px;
+    font-size: 18px;
+    background-color: white;
+    color: black;
+    border-style: none;
+    border: 2px solid #c5c5c5;
+    width: 50%;
+}
+
+.container1 .busca #pesquisar:focus {
+    outline: 0;
+}
+
+.container1 #consultas-geral {
+    margin-top: 30px;
+    padding: 20px 40px;
+    width: 90vw;
+    border-radius: 20px;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 0px 5px rgba(0, 0, 0, 0.38);
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+th, td {
+    padding: 15px 30px;
+}
+
+.container1 #consultas-geral th {
+    margin-bottom: 20px;
+    font-size: 20px;
+    border-right: 1px solid #c5c5c5;
+}
+
+.container1 #consultas-geral td {
+    text-align: center;
+    font-size: 18px;
+    border-right: 1px solid #c5c5c5;
+}
+
+.container1 #consultas-geral .last-td {
+    border: none;
+    width: 250px;
+}
+
+.container1 #consultas-geral a {
+    text-decoration: none;
+    color: white;
+    font-size: 19px;
+    font-weight: 500;
+    padding: 8px 10px;
+    border-radius: 10px;
+}
+
+.container1 #consultas-geral .btn-editar {
+    background-color: var(--primary-color);
+    margin-right: 10px;
+}
+
+.container1 #consultas-geral .btn-excluir {
+    background-color: #f81d1d;
+}
+
 .local_consultaInfo{
     display: flex;
     flex-direction: row;
