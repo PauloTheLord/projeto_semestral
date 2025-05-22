@@ -16,6 +16,10 @@
     font-family: "Montserrat", sans-serif;
 }
 
+body {
+    background-color: #eff6fe;
+}
+
 .nav_bar {
     background-color: var(--neutral-color);
     margin: 10px 15px;
@@ -82,7 +86,7 @@
 }
 
 label {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
     color: #000f2c;
     display: block;

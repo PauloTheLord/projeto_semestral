@@ -16,6 +16,11 @@
     font-family: "Montserrat", sans-serif;
 }
 
+body {
+    overflow-y: hidden;
+    background-color: #eff6fe;
+}
+
 .nav_bar {
     background-color: var(--neutral-color);
     margin: 10px 15px;
@@ -62,24 +67,23 @@
 }
 
 #cadastro_local{
+    margin-top: 11vh;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
     width: 100%;
 }
 
 .card-cadastro {
-    background-color: var(--back-ground);
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    border-radius: 25px;
+    align-items: center;
+    background-color: var(--back-ground);
+    border-radius: 15px;
+    width: 420px;
+    height: 65vh;
     box-shadow: 7px 7px 0px rgba(0, 0, 0, 0.3);
-    padding: 20px 20px;
-    height: 67vh;
-    width: 550px;
+    border: 2px solid var(--primary-color);
 }
 
 .step {
@@ -92,15 +96,26 @@
 
 }
 
+.step .group-label-input label {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 7px;
+}
+
 .step .textbox {
     width: 300px;
     padding: 6px 10px;
     border: 2px solid var(--secondary-color);
     border-radius: 15px;
+    margin-bottom: 15px;
 }
 
-.part-1 .card-cadastro form .textbox:focus {
+.step .textbox:focus {
     outline: none;
+}
+
+.step .textbox.last {
+    margin-bottom: 25px;
 }
 
 .btn_step{
@@ -109,8 +124,9 @@
     border: var(--back-ground);
     border-radius: 10px;
     padding: 10px;
-    margin: 5px;
-    font-weight: bold;    
+    margin: 5px 0;
+    font-weight: bold;
+    cursor: pointer;  
 }
 
 #btn_cadastrar {

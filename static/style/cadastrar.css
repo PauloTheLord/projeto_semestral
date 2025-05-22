@@ -87,13 +87,8 @@
     border-radius: 25px;
     box-shadow: 7px 7px 0px rgba(0, 0, 0, 0.3);
     padding: 20px 20px;
-    height: 67vh;
+    height: 70vh;
     width: 550px;
-}
-
-.part-1 .card-cadastro .group-titulo-logo .titulo-cadastro {
-    font-weight: 400;
-    font-size: 50px;
 }
 
 .part-1 .card-cadastro form {
@@ -109,6 +104,10 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
+}
+
+.part-1 .card-cadastro form .step .group-label-input label {
+    font-size: 14px;
 }
 
 .part-1 .card-cadastro form .step .textbox {

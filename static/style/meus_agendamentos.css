@@ -9,6 +9,10 @@
     --back-ground:#FEFCF9;
 }
 
+body {
+    background-color: #eff6fe;
+}
+
 * {
     margin: 0;
     padding: 0;
