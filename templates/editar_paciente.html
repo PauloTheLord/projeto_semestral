@@ -3,55 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Editar Paciente</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'style/editar_paciente.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 <body>
     
     <form action="/gravar_paciente" method="post">
-         <input value="{{paciente_selecionado.cpf}}" type="hidden" name ="txtCpf">
 
+        <nav class="nav_bar">
+            <div class="back_btn">
+                <a href="/lista_pacientes" class="bi bi-arrow-left"></a>
+            </div>
+            <div class="div_txt">
+                <h1 class="nav_txt">Editar Paciente</h1>
+            </div>
+            <img class="logo-img" src="/static/assets/img/logo2-bg-removed.png" alt="logo">
+        </nav>
+
+        <input value="{{paciente_selecionado.cpf}}" type="hidden" name ="txtCpf">
+
+            <div id="cadastro_local">
+                <div class="card-cadastro">
+                    <div class="step active">
+                        
+                        <div class="group-label-input">
+                            <label for="cpf">CPF</label>
+                            <input class="textbox" type="text"  name="txtNovocpf" pattern="\d{11}" maxlength="11" id="cpf" placeholder="insira o novo CPF"> <br><br>
+                        </div>
+                        
+                        <div class="group-label-input">
+                            <label for="nome">Nome</label>
+                            <input class="textbox" type="text"  name="txtNome"  id="nome" placeholder="insira o novo nome"> <br><br>
+                        </div>
+                        
+                        <div class="group-label-input">
+                            <label for="tel">Telefone</label>
+                            <input class="textbox" type="text" name="txtTelefone" id="tel"  pattern="\d{11}" maxlength="11" placeholder=" insira o novo telefone">  <br><br>
+                        </div>
+
+
+
+                        <button type="button" onclick="nextStep()" class="btn_step">Próximo</button>
+                    </div>
+                    
+                    <div class="step">
+                    
+                        <div class="group-label-input">
+                            <label for="email">Email</label>
+                            <input class="textbox" type="email"  name="txtEmail"  id="email" placeholder="digite o novo e-mail"><br><br>
+                        </div>
+
+
+                        <div class="group-label-input">
+                            <label >Data Nascimento</label>
+                            <input class="textbox" type="date"  name="txtData"> <br><br>
+                        </div>
+                        
+                        <div class="group-label-input">
+                            <label >Senha</label>
+                            <input class="textbox" type="text"  name="txtSenha"> <br><br>
+                        </div>
+
+                        <button type="button" onclick="prevStep()" class="btn_step">Voltar</button>
+                        <button type="button" onclick="nextStep()" class="btn_step">Próximo</button>
+                    </div>
+                    <div class="step">  
+                        <div class="group-label-input">
+                            <label >CEP</label>
+                            <input class="textbox" type="text"  name="txtCep"  pattern="\d{8}" maxlength="8" id="cep"> <br><br>
+                        </div>
+                        
+                        
+                        <div class="group-label-input">
+                            <label>Rua</label>
+                            <input class="textbox" type="text"  name="txtRua" id="rua"> <br> <br>
+                        </div>
+                        
+                        <div class="group-label-input">
+                            <label >Bairro</label>
+                            <input class="textbox" type="text"  name="txtBairro" id="bairro"> <br>  <br>
+                        </div>
+                        
+                        <div class="group-label-input">
+                            <label >Cidade</label>
+                            <input class="textbox" type="text"  name="txtCidade" id="cidade">  <br> <br>
+                        </div>
+                        
+                        <div class="group-label-input">
+                            <label >UF</label>
+                            <input class="textbox" type="text"  name="txtUf" id="UF"> <br> <br>
+                        </div>
+                        
+                        <button type="button" onclick="prevStep()" class="btn_step">Voltar</button>
+                        <button type="submit" class="btn_step" id="btn_cadastrar">Atualizar Cadastro </button>
+                    </div>
+
+
+
+
+                </div>
+                
+            </div>
             
-            <label for="cpf">CPF</label>
-            <input type="text"  name="txtNovocpf" pattern="\d{11}" maxlength="11" id="cpf" placeholder="insira o novo CPF"> <br><br>
-
-            <label for="nome">Nome</label>
-            <input type="text"  name="txtNome"  id="nome" placeholder="insira o novo nome"> <br><br>
-
-            <label for="tel">Telefone</label>
-            <input type="text" name="txtTelefone" id="tel"  pattern="\d{11}" maxlength="11" placeholder=" insira o novo telefone">  <br><br>
-
-
-             <label for="email">Email</label>
-            <input type="email"  name="txtEmail"  id="email" placeholder="digite o novo e-mail"><br><br>
-
-            <label >Data Nascimento</label>
-            <input type="date"  name="txtData"> <br><br>
-            
-            <label >Senha</label>
-            <input type="text"  name="txtSenha"> <br><br>
-
-            <label >CEP</label>
-            <input type="text"  name="txtCep"  pattern="\d{8}" maxlength="8"> <br><br>
-
-            <label>Rua</label>
-            <input type="text"  name="txtRua"> <br> <br>
-        
-
-            <label >Bairro</label>
-            <input type="text"  name="txtBairro"> <br>  <br>
-
-            <label >Cidade</label>
-            <input type="text"  name="txtCidade">  <br> <br>
-
-            <label >UF</label>
-            <input type="text"  name="txtUf"> <br> <br>
-
-
-
-            <button type="submit">Atualizar Cadastro </button>
-
     </form>
 
-     <a href="/lista_pacientes"> Voltar </a>
+    <script src="{{ url_for('static', filename = 'script/editar_paciente.js')}}"></script>
 </body>
 </html>
