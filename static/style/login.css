@@ -16,6 +16,24 @@
     font-family: "Montserrat", sans-serif;
 }
 
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+.bi.bi-arrow-left {
+    position: absolute;
+    color: var(--back-ground);
+    font-size: 70px;
+    text-decoration: none;
+    transition: 0.3s;
+    left: 20px;
+}
+
+.bi.bi-arrow-left:hover {
+    transform: scale(1.1);
+}
+
 #erro_div {
     background-color: var(--back-ground);
     text-align: center;
@@ -59,13 +77,10 @@
 
 .container{
     background-color: var(--neutral-color);
-    background-size: cover;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     padding: 0;
-    position: relative;
 }
 
 .group-titulo-logo{
