@@ -55,7 +55,7 @@ body {
     color: var(--back-ground);
     text-transform: uppercase;
     font-weight: 700;
-    font-size: 40px;
+    font-size: 30px;
     text-align: center;
 }
 
@@ -78,7 +78,7 @@ body {
 .card {
     background-color: var(--back-ground);
     display: flex;
-    width: 590px;
+    width: 500px;
     padding: 25px 0;
     flex-direction: column;
     align-items: center;
@@ -163,6 +163,8 @@ body {
 .txt_noticia {
     height: 100%;
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -177,25 +179,27 @@ body {
 }
 
 .txt_noticia .texto-noticia-principal {
-    font-size: 33px;
+    font-size: 30px;
     font-weight: 500;
     margin-bottom: 10px;
 }
 
 .txt_noticia .fonte {
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .img1{
-    background: linear-gradient(rgba(255, 255, 255, 0.096), rgba(0, 0, 0, 0.342), rgba(0, 0, 0, 0.925)), url(/static/assets/img/noticia1.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-
+    background-image: linear-gradient(rgba(255, 255, 255, 0.096), rgba(0, 0, 0, 0.342), rgba(0, 0, 0, 0.925)), url(/static/assets/img/noticia1.jpg);
 }
+
 .img2{
     background-image: linear-gradient(rgba(255, 255, 255, 0.096), rgba(0, 0, 0, 0.342), rgba(0, 0, 0, 0.925)), url(/static/assets/img/noticia2.jpg);
 }
+
 .img3{
     background-image: linear-gradient(rgba(255, 255, 255, 0.096), rgba(0, 0, 0, 0.342), rgba(0, 0, 0, 0.925)), url(/static/assets/img/noticia3.jpg);
+}
+
+.swiper-button-next::after, .swiper-button-prev::after {
+    color: #fff;
 }
