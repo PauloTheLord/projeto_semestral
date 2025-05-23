@@ -15,6 +15,22 @@
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
 }
+
+.bi.bi-arrow-left {
+    position: absolute;
+    color: var(--back-ground);
+    font-size: 70px;
+    text-decoration: none;
+    transition: 0.3s;
+    top: 10px;
+    left: 670px;
+    cursor: pointer;
+}
+
+.bi.bi-arrow-left:hover {
+    transform: scale(1.1);
+}
+
 #erro_div{
     background-color: var(--back-ground);
     text-align: center;

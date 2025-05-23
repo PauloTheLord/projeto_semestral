@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmar Informações</title>
     <link rel="stylesheet" href="{{ url_for('static', filename = 'style/confirmarInfo.css')}}">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="icon" type="image/x-icon" href="/static/assets/img/head_icon.png">
 </head>
 <body>
-
     {% if alert_value %}
         <div id="erro_div">
             <h3>Erro</h3>
@@ -26,6 +27,7 @@
             </div>
 
             <div id="info_local">
+                <a class="bi bi-arrow-left" onclick="history.back()"></a>
                 <div class="card-info">
 
                     <div class="group-titulo-logo">
