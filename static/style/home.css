@@ -137,6 +137,8 @@ body {
 .swiper {
     width: 80%;
     height: 60vh;
+    border-radius: 35px;
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 0.575);
 }
 
 .swiper-slide {
@@ -171,6 +173,7 @@ body {
     justify-content: end;
     border-radius: 35px;
     padding: 35px 50px;
+    border: 2px solid var(--primary-color);
 }
 
 .txt_noticia p {
