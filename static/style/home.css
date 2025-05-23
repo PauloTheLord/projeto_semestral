@@ -55,7 +55,7 @@ body {
     color: var(--back-ground);
     text-transform: uppercase;
     font-weight: 700;
-    font-size: 30px;
+    font-size: 40px;
     text-align: center;
 }
 
@@ -78,13 +78,13 @@ body {
 .card {
     background-color: var(--back-ground);
     display: flex;
-    width: 500px;
+    width: 590px;
     padding: 25px 0;
     flex-direction: column;
     align-items: center;
     text-align: center;
     border: 2px solid var(--primary-color);
-    border-radius: 10%;
+    border-radius: 45px;
     text-decoration: none;
     box-shadow: 7px 7px 0px rgba(0, 0, 0, 0.3);
     transition: 0.3s;
@@ -131,12 +131,12 @@ body {
 }
 
 .swiper_local{
-    margin: 1%;
+    margin: 60px 0;
 }
 
 .swiper {
-    width: 60%;
-    height: 65vh;
+    width: 80%;
+    height: 60vh;
 }
 
 .swiper-slide {
@@ -146,6 +146,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 35px;
+}
+
+.swiper-slide a {
+    text-decoration: none;
 }
 
 .swiper-slide img {
@@ -153,35 +158,44 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 5%;
 }
 
 .txt_noticia {
     height: 100%;
     background-size: cover;
-    border-radius: 5%;
     display: flex;
     flex-direction: column;
+    align-items: start;
     justify-content: end;
-
+    border-radius: 35px;
+    padding: 35px 50px;
 }
 
 .txt_noticia p {
-    margin: 2%;
-    margin-bottom: 10%;
-    font-size: 1.5vw;
-    color: var(--highlight-color);
-    background-color: var(--secondary-color);
-    border-radius: 10%;
+    text-align: justify;
+    color: var(--back-ground);
+}
+
+.txt_noticia .texto-noticia-principal {
+    font-size: 33px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.txt_noticia .fonte {
+    font-size: 22px;
 }
 
 .img1{
-    background-image: url(/static/assets/img/noticia1.avif);
+    background: linear-gradient(rgba(255, 255, 255, 0.096), rgba(0, 0, 0, 0.342), rgba(0, 0, 0, 0.925)), url(/static/assets/img/noticia1.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 
 }
 .img2{
-    background-image: url(/static/assets/img/noticia2.avif);
+    background-image: linear-gradient(rgba(255, 255, 255, 0.096), rgba(0, 0, 0, 0.342), rgba(0, 0, 0, 0.925)), url(/static/assets/img/noticia2.jpg);
 }
 .img3{
-    background-image: url(/static/assets/img/noticia3.webp);
+    background-image: linear-gradient(rgba(255, 255, 255, 0.096), rgba(0, 0, 0, 0.342), rgba(0, 0, 0, 0.925)), url(/static/assets/img/noticia3.jpg);
 }
