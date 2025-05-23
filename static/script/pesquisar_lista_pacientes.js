@@ -15,7 +15,6 @@ input_pesquisar.addEventListener('keyup', () =>
     let paciente_individual = pacientes_geral.getElementsByClassName('paciente-individual');
     var semPacientes = true;
 
-    console.log(paciente_individual);
     for (let posicao in paciente_individual) {
         if (true === isNaN(posicao)) {
             continue;
