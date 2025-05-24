@@ -23,6 +23,7 @@
     text-decoration: none;
     transition: 0.3s;
     left: 20px;
+    cursor: pointer;
 }
 
 .bi.bi-arrow-left:hover {
